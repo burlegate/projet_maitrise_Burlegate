@@ -2,9 +2,8 @@
 
 Le fichier BOTS v3 DNS n'est pas inclus dans ce dépôt.
 
-Le prototype attend le fichier :
+L'agent de pré-chasse utilise le fichier suivant :
 
-data/botsv3_dns_complet.csv
+`data/botsv3_dns_complet.csv`
 
-Le CSV utilisé dans l'expérimentation contient 218 456 événements
-issus du sourcetype stream:dns de BOTS v3.
+Le fichier CSV utilisé dans l'expérimentation contient 218 456 événements DNS issus du sourcetype `stream:dns` de BOTS v3.
