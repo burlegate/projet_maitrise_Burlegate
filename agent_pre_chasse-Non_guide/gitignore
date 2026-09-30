@@ -1,1 +1,18 @@
 
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+.env
+.env.*
+*.key
+
+data/*.csv
+
+resultats/debug_*.json
+resultats/debug_*.txt
+
+.vscode/
+.DS_Store
+Thumbs.db
