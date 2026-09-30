@@ -41,3 +41,10 @@ agent_prechasse_guidee-mini_rag/
 │   └── agent_dns_v9_mini_rag.txt
 └── resultats/
     └── prechasse_v9_dns_mini_rag_20260804T042327Z.json
+
+## Prérequis
+
+- Python 3
+- une clé API OpenAI
+- les dépendances indiquées dans `requirements.txt`
+
