@@ -1,0 +1,45 @@
+# Guide DNS Threat Hunting général — Mini-RAG V9
+
+Ce guide est une connaissance générale. Il ne contient aucune vérité terrain, aucun indicateur propre à un dataset, aucun nom d'hôte ou domaine cible à chercher.
+
+## 1. Rôle du DNS en chasse aux menaces
+Les journaux DNS permettent d'observer les résolutions de noms effectuées par des hôtes. Ils peuvent révéler des comportements visibles indirectement par DNS : découverte interne, accès vers services externes, automatisation, erreurs de résolution, beaconing observable par DNS, tunneling DNS, DGA, ou activité web externe inhabituelle.
+
+## 2. Socle dominant vs signal intéressant
+Un domaine très fréquent n'est pas automatiquement suspect. Il peut représenter un service central, une infrastructure interne, un agent applicatif ou une dépendance légitime.
+Un signal intéressant peut être faible en volume mais significatif par sa rareté, sa concentration sur peu d'hôtes, sa réponse réussie, sa structure inhabituelle, ou son écart avec le socle dominant.
+
+## 3. Domaines externes rares avec réponse réussie
+Un domaine externe rare avec NoError peut mériter une hypothèse candidate, surtout s'il est vu par un seul hôte ou un petit nombre d'hôtes. Ce type d'observable peut être lié à une activité web ponctuelle, un service tiers, une télémétrie, un beaconing visible par DNS, ou un usage automatisé.
+
+## 4. Familles de sous-domaines
+Plusieurs sous-domaines sous une même racine externe peuvent indiquer un CDN, une plateforme SaaS, du tracking, de la publicité, une application web, un mécanisme automatisé, ou une infrastructure potentiellement suspecte. Il faut formuler une hypothèse candidate seulement si les noms sont observés dans le CSV.
+
+## 5. FQDN longs ou labels structurés
+Des FQDN très longs, des labels alphanumériques denses, ou des noms peu lisibles peuvent correspondre à de la télémétrie, du tracking, des identifiants applicatifs, un DGA, du tunneling DNS ou une automatisation. Ils ne prouvent rien seuls.
+
+## 6. NXDomain
+Des NXDomain répétés peuvent indiquer une mauvaise configuration, une recherche de suffixe, un nom interne absent, une DGA, ou des tentatives automatisées. NXDomain est un indice initial, pas une preuve.
+
+## 7. Types DNS
+Les types A et AAAA sont très courants. SRV et PTR peuvent révéler de la découverte interne. TXT peut être intéressant selon le contexte. Des types rares ou inattendus doivent être décrits comme observables, sans conclusion directe.
+
+## 8. Hôtes sources et concentration
+Un comportement vu par un seul hôte ou très peu d'hôtes peut être plus intéressant qu'un comportement vu partout. La concentration par hôte source aide à formuler des hypothèses candidates, mais ne confirme rien.
+
+## 9. Motifs lexicaux génériques
+Certains termes génériques dans des noms DNS peuvent attirer l'attention dans une pré-chasse : bot, beacon, c2, tunnel, payload, exploit, scan, crypto, mine, mining, miner, pool, wallet, hash, coin. Ces termes sont génériques et ne doivent jamais être traités comme vérité terrain. Ils servent seulement à repérer des indices possibles s'ils apparaissent naturellement dans le CSV.
+
+## 10. Hypothèses candidates DNS possibles
+Une hypothèse candidate DNS doit rester prudente. Exemples de formes générales :
+- Un hôte pourrait interroger une famille de domaines externes rares avec réponses réussies.
+- Des FQDN longs pourraient refléter une automatisation, de la télémétrie ou un usage DNS atypique.
+- Des NXDomain répétitifs pourraient indiquer une mauvaise configuration ou une génération automatique de noms.
+- Des requêtes SRV/PTR pourraient refléter une découverte interne attendue ou à surveiller.
+- Des domaines externes rares avec motifs lexicaux liés à l'automatisation ou aux ressources pourraient suggérer une activité applicative inhabituelle observable par DNS.
+
+## 11. Faux positifs fréquents
+Les CDN, la publicité, la télémétrie, les services SaaS, les mises à jour logicielles, les suffix searches, les environnements cloud et les services internes peuvent générer des signaux qui ressemblent à des anomalies. Toujours proposer une alternative légitime.
+
+## 12. Limite de la pré-chasse
+La pré-chasse formule des hypothèses candidates. Elle ne confirme pas, ne réfute pas, ne choisit pas une hypothèse gagnante, ne produit pas de verdict et ne construit pas de preuve.
