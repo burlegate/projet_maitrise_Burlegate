@@ -1,0 +1,431 @@
+{
+  "metadata": {
+    "date_utc": "2026-08-04T04:23:27.695015+00:00",
+    "mode": "dns_autonome_mini_rag",
+    "version_agent": "v9_dns_mini_rag",
+    "model": "gpt-5.4-mini",
+    "reasoning_effort": "medium",
+    "max_output_tokens": 24000,
+    "csv": "C:\\Users\\burle\\Downloads\\botsv3_dns_complet.csv",
+    "csv_name": "botsv3_dns_complet.csv",
+    "knowledge_file": "C:\\Users\\burle\\Downloads\\prechasse_dns_v9_mini_rag\\prechasse_dns_v9_mini_rag\\prechasse_dns_v9_mini_rag\\knowledge\\guide_dns_threat_hunting_general.txt",
+    "response_id": "resp_0a8eed6e5368842d016a716890e038819f8f3d5a5a04f338bd",
+    "note": "Pré-chasse DNS uniquement: CSV complet + mini-RAG DNS général. Pas de CSV partiel, pas de SPL, pas de plan, pas de pivot, pas de confirmation/refutation."
+  },
+  "rapport": {
+    "phase": "pre_chasse",
+    "mode": "dns_autonome_mini_rag",
+    "version_agent": "v9_dns_mini_rag",
+    "base_connaissance": {
+      "type_base": "mini_rag_dns_general",
+      "role_de_la_base": "Aider l'interprétation générale des observables DNS (socle dominant, rareté, types, NXDomain, familles de sous-domaines, FQDN longs, concentration par hôte) sans fournir de vérité terrain.",
+      "regle_anti_verite_terrain": "Le mini-RAG sert uniquement de grille de lecture DNS générale; il ne contient aucun indicateur propre au CSV et ne doit pas être traité comme une liste à remplir ni comme une preuve.",
+      "idees_generales_utilisees": [
+        "socle dominant vs signal intéressant",
+        "domaine externe rare avec réponse réussie",
+        "familles de sous-domaines",
+        "FQDN longs ou labels structurés",
+        "NXDomain répétés",
+        "types DNS atypiques",
+        "concentration par hôte",
+        "motifs lexicaux génériques",
+        "faux positifs fréquents"
+      ]
+    },
+    "resume_dataset": {
+      "type_logs": "journaux DNS stream:dns d'un CSV complet",
+      "nombre_lignes_csv": 218456,
+      "nombre_evenements_estime": 218456,
+      "periode_observee": "2018-08-20T05:03:42.964-0400 à 2018-08-20T11:18:00.966-0400",
+      "champs_identifies": [
+        "_time",
+        "host",
+        "sourcetype",
+        "source",
+        "_raw",
+        "timestamp",
+        "endtime",
+        "host_addr",
+        "message_type",
+        "name",
+        "query",
+        "query_type",
+        "reply_code",
+        "reply_code_id",
+        "response_time",
+        "transaction_id",
+        "ttl",
+        "bytes",
+        "src_ip",
+        "src_mac",
+        "src_port",
+        "bytes_in",
+        "dest_ip",
+        "dest_mac",
+        "dest_port",
+        "bytes_out",
+        "time_taken",
+        "transport",
+        "flow_id",
+        "protocol_stack"
+      ],
+      "champ_raw_inspecte": "oui",
+      "champs_dns_extraits": [
+        "query",
+        "name",
+        "query_type",
+        "reply_code",
+        "reply_code_id",
+        "message_type",
+        "src_ip",
+        "dest_ip",
+        "ttl",
+        "response_time",
+        "time_taken",
+        "transaction_id",
+        "src_port",
+        "dest_port",
+        "transport",
+        "protocol_stack",
+        "host_addr"
+      ]
+    },
+    "lecture_dns_realisee": {
+      "approche_generale": "Lecture statistique et qualitative du CSV: identification du socle dominant, extraction des types DNS et codes de réponse, recherche de rareté, concentration par hôte, familles de sous-domaines, FQDN longs/structurés et motifs lexicaux inhabituels.",
+      "dimensions_dns_observees": [
+        "dominance de certains domaines",
+        "répartition par hôte source",
+        "répartition des types A/AAAA/PTR/SRV/TXT/NIMLOC",
+        "répartition des réponses NoError/NXDomain",
+        "familles de sous-domaines externes",
+        "FQDN longs ou structurés",
+        "requêtes de type NIMLOC",
+        "concentration d'observables rares sur un seul hôte",
+        "présence de motifs lexicaux de type beacon/coinhive/footprintdns"
+      ],
+      "note_sur_autonomie": "Analyse effectuée uniquement à partir du CSV DNS et du mini-RAG général, sans enrichissement externe ni connaissance préalable du scénario."
+    },
+    "socle_dns_dominant_ou_attendu": [
+      {
+        "element_dns": "splunk.froth.ly",
+        "raison_classement_socle": "C'est le domaine de loin le plus fréquent du jeu de données, avec une présence sur plusieurs hôtes; il ressemble davantage à un socle applicatif/environnemental qu'à un signal rare.",
+        "exemples_dns": [
+          "splunk.froth.ly"
+        ],
+        "impact_sur_generation_hypotheses": "Les autres observables doivent être évalués par rapport à ce bruit de fond dominant; la fréquence seule ne suffit pas à rendre un domaine suspect."
+      },
+      {
+        "element_dns": "Services cloud/SaaS majeurs (Microsoft, Google, AWS)",
+        "raison_classement_socle": "Plusieurs domaines très courants appartiennent à des services attendus de messagerie, navigation, télémetrie ou infrastructure cloud.",
+        "exemples_dns": [
+          "outlook.office365.com",
+          "login.microsoftonline.com",
+          "officeapps.live.com",
+          "config.edge.skype.com",
+          "v10.events.data.microsoft.com",
+          "ssm.us-west-1.amazonaws.com",
+          "ec2messages.us-west-1.amazonaws.com"
+        ],
+        "impact_sur_generation_hypotheses": "Ces noms forment un socle légitime plausible; ils réduisent la valeur d'anomalie des requêtes répétées vers des services tiers bien connus."
+      },
+      {
+        "element_dns": "Résolution interne et autodécouverte locale",
+        "raison_classement_socle": "Les noms de type wpad, sepmserver, _ldap, _msdcs, _ipp._tcp.local et les suffixes local/localdomain/computed.internal apparaissent comme du trafic interne ou de découverte de services.",
+        "exemples_dns": [
+          "wpad.localdomain",
+          "wpad.local",
+          "sepmserver.localdomain",
+          "sepmserver.local",
+          "_ldap._tcp.SV5._sites.dc._msdcs.splunk.local",
+          "sv5dc01.splunk.local",
+          "Brother QL-820NWB [f8da0c2df98b] (3)._ipp._tcp.local"
+        ],
+        "impact_sur_generation_hypotheses": "Ces observables peuvent expliquer une grande partie du volume et des erreurs de nommage sans conclure à un comportement malveillant."
+      },
+      {
+        "element_dns": "Infra AWS/EC2 et noms d'hôtes internes de type compute.internal",
+        "raison_classement_socle": "Des noms d'hôtes et domaines liés à l'infrastructure cloud ou à des machines internes reviennent de manière récurrente.",
+        "exemples_dns": [
+          "polaris.cr7wwvryvz4o.us-west-1.rds.amazonaws.com",
+          "mars.i-08e52f8b5a034012d",
+          "gacrux.i-0920036c8ca91e501",
+          "mars.i-08e52f8b5a034012d.us-west-1.compute.internal",
+          "gacrux.i-0920036c8ca91e501.us-west-1.compute.internal"
+        ],
+        "impact_sur_generation_hypotheses": "Le socle inclut des résolutions d'infrastructure qui peuvent produire des NXDomain ou des variantes de nom sans que cela implique une activité suspecte."
+      },
+      {
+        "element_dns": "Recherches PTR / reverse DNS",
+        "raison_classement_socle": "Les requêtes de reverse lookup sont présentes en volume notable et génèrent un bruit DNS classique.",
+        "exemples_dns": [
+          "150.13.114.167.in-addr.arpa",
+          "33.62.121.40.in-addr.arpa",
+          "f.f.f.f.3.8.e.0.b.e.4.4.1.1.8.5.f.f.f.f.8.f.2.0.3.8.7.f.8.a.0.c.ip6.arpa"
+        ],
+        "impact_sur_generation_hypotheses": "Ce type d'observable doit être traité comme du bruit de fond potentiellement normal avant d'être interprété comme un signal."
+      }
+    ],
+    "indices_dns_observes": [
+      {
+        "id": "I1",
+        "type_observable_dns": "socle_dominant",
+        "observation": "Un domaine interne/applicatif domine massivement le volume DNS, avec une forte répétition sur plusieurs hôtes.",
+        "justification_dans_les_donnees": "splunk.froth.ly apparaît à lui seul à 136181 occurrences, bien au-dessus des autres noms; il est présent sur 16 hôtes sources.",
+        "exemples_dns": [
+          "splunk.froth.ly"
+        ],
+        "interpretation_initiale_pre_chasse": "Ce domaine doit d'abord être considéré comme socle environnemental possible, pas comme signal suspect principal."
+      },
+      {
+        "id": "I2",
+        "type_observable_dns": "domaine_externe",
+        "observation": "Une petite famille de requêtes vers Coinhive est concentrée sur un seul hôte source, avec des sous-domaines ws structurés.",
+        "justification_dans_les_donnees": "coinhive.com est observé 6 fois sur 1 seul hôte; les sous-domaines ws001/ws005/ws011/ws014/ws019.coinhive.com apparaissent aussi et restent centrés sur 192.168.247.131.",
+        "exemples_dns": [
+          "coinhive.com",
+          "ws001.coinhive.com",
+          "ws005.coinhive.com",
+          "ws011.coinhive.com",
+          "ws014.coinhive.com",
+          "ws019.coinhive.com"
+        ],
+        "interpretation_initiale_pre_chasse": "Peut refléter un usage de ressources tierces ou un comportement lié au minage/chargement de scripts, sans confirmation."
+      },
+      {
+        "id": "I3",
+        "type_observable_dns": "famille_de_sous_domaines",
+        "observation": "Plusieurs domaines 'beacon' et assimilés forment une petite famille multi-éditeur, observée sur quelques hôtes.",
+        "justification_dans_les_donnees": "Des requêtes existent vers beacons.gcp.gvt2.com (270), beacons5.gvt3.com (15), gslbeacon.lijit.com (18), beacon.krxd.net (15), beacon.walmart.com (14), beacon.sojern.com (9) et beacon-us-iad2.rubiconproject.com (2).",
+        "exemples_dns": [
+          "beacons.gcp.gvt2.com",
+          "beacons5.gvt3.com",
+          "gslbeacon.lijit.com",
+          "beacon.krxd.net",
+          "beacon.walmart.com",
+          "beacon.sojern.com",
+          "beacon-us-iad2.rubiconproject.com"
+        ],
+        "interpretation_initiale_pre_chasse": "Peut indiquer du tracking, de la publicité ou des pages web chargées avec de nombreux tags tiers, sans que cela soit forcément malveillant."
+      },
+      {
+        "id": "I4",
+        "type_observable_dns": "type_dns_atypique",
+        "observation": "Le type NIMLOC apparaît en volume non négligeable et produit des labels très structurés, souvent majuscules et répétitifs.",
+        "justification_dans_les_donnees": "NIMLOC compte 3363 événements sur 19 hôtes; plusieurs noms suivent le motif F/E/C/A avec des séquences répétées comme CACA...",
+        "exemples_dns": [
+          "FDEFFAENFDEFFCFGEFFCCACACACACAAA",
+          "FHFAEBEECACACACACACACACACACACAAA",
+          "FHEPFCELEHFCEPFFFACACACACACACABN",
+          "FDFAEMFFEOELCACACACACACACACACABN",
+          "ABACFPFPENFDECFCEPFHFDEFFPFPACAB"
+        ],
+        "interpretation_initiale_pre_chasse": "Peut correspondre à une logique applicative/protocolaire ou à une génération automatisée de noms; un aspect DGA-like est possible mais non prouvé."
+      },
+      {
+        "id": "I5",
+        "type_observable_dns": "reponse_dns",
+        "observation": "Plusieurs noms de type service interne ou recherche de suffixe reviennent avec de nombreux NXDomain.",
+        "justification_dans_les_donnees": "wpad.froth.ly (611), sepmserver.froth.ly (373), _ldap._tcp.dc._msdcs.froth.ly (14), canonicalizer.ucsuri.tcs (89) et acph.cisco.com (39) montrent des NXDomain répétés.",
+        "exemples_dns": [
+          "wpad.froth.ly",
+          "sepmserver.froth.ly",
+          "_ldap._tcp.dc._msdcs.froth.ly",
+          "canonicalizer.ucsuri.tcs",
+          "acph.cisco.com"
+        ],
+        "interpretation_initiale_pre_chasse": "Peut traduire une recherche de suffixe, une autodécouverte interne ou une absence de résolution attendue; cela peut aussi être un simple problème de configuration."
+      },
+      {
+        "id": "I6",
+        "type_observable_dns": "fqdn_long_ou_structure",
+        "observation": "Des FQDN très longs ou fortement structurés, parfois avec des labels hachés, apparaissent sur un petit nombre d'hôtes.",
+        "justification_dans_les_donnees": "On observe des noms comme 879887d424ef8a62209c16f528160e1c.nrb.footprintdns.com, 0ca2d88086f590eee3004422079093b3.nrb.footprintdns.com, 83581efc9ae23fefc23c26d7a3e1b557.clo.footprintdns.com, p4-csddrc45xqiym-xmvtplcdqchjqs5r-322917-i1.stbcast2-stb.metric.gstatic.com et p4-csddrc45xqiym-xmvtplcdqchjqs5r-322917-i2.anycast-stb.metric.gstatic.com.",
+        "exemples_dns": [
+          "879887d424ef8a62209c16f528160e1c.nrb.footprintdns.com",
+          "0ca2d88086f590eee3004422079093b3.nrb.footprintdns.com",
+          "83581efc9ae23fefc23c26d7a3e1b557.clo.footprintdns.com",
+          "p4-csddrc45xqiym-xmvtplcdqchjqs5r-322917-i1.stbcast2-stb.metric.gstatic.com",
+          "p4-csddrc45xqiym-xmvtplcdqchjqs5r-322917-i2.anycast-stb.metric.gstatic.com"
+        ],
+        "interpretation_initiale_pre_chasse": "Peut refléter de la télémétrie, du cache-busting, de l'ads/trackers ou des résolutions automatisées; le format seul ne permet pas de trancher."
+      }
+    ],
+    "hypotheses_candidates": [
+      {
+        "id": "H1",
+        "hypothese_dns_candidate": "Un ou plusieurs hôtes pourraient accéder à une infrastructure liée à Coinhive ou à des ressources tierces de type minage embarqué visibles par DNS.",
+        "comportement_dns_associe": "Petit volume, forte concentration sur un seul hôte, et famille de sous-domaines ws structurés sous coinhive.com.",
+        "indices_initiaux": [
+          "I2"
+        ],
+        "observables_dns_mobilises": [
+          "domaine_externe",
+          "famille_de_sous_domaines",
+          "concentration_hote",
+          "repetition",
+          "motif_lexical"
+        ],
+        "exemples_dns_qui_motivent": [
+          "coinhive.com",
+          "ws001.coinhive.com",
+          "ws005.coinhive.com",
+          "ws011.coinhive.com",
+          "ws014.coinhive.com",
+          "ws019.coinhive.com"
+        ],
+        "idee_du_mini_rag_utilisee": "Domaine externe rare avec réponse réussie, famille de sous-domaines et concentration par hôte.",
+        "raison_de_plausibilite": "La famille est observée sur un seul poste et présente des sous-domaines répétitifs et très ciblés, ce qui ressemble à un usage spécifique plutôt qu'à du bruit global.",
+        "alternative_legitime": "Un site web ou une application consultée par ce poste pourrait intégrer des scripts ou ressources externes héritées d'un ancien service sans que cela implique du minage réel.",
+        "portee_pre_chasse": "hypothese_candidate_non_testee",
+        "ce_que_l_agent_ne_conclut_pas": [
+          "je ne conclus pas à une infection",
+          "je ne conclus pas à du minage confirmé",
+          "je ne conclus pas à une preuve de charge utile"
+        ]
+      },
+      {
+        "id": "H2",
+        "hypothese_dns_candidate": "Des requêtes vers plusieurs domaines 'beacon' pourraient correspondre à du tracking, de la publicité ou à des pages web chargées avec de nombreux tags tiers, visibles au niveau DNS.",
+        "comportement_dns_associe": "Famille multi-éditeur, petits volumes par domaine mais présence répétée sur quelques hôtes, avec des noms lexicalement orientés 'beacon'.",
+        "indices_initiaux": [
+          "I3"
+        ],
+        "observables_dns_mobilises": [
+          "domaine_externe",
+          "famille_de_sous_domaines",
+          "repetition",
+          "concentration_hote",
+          "motif_lexical"
+        ],
+        "exemples_dns_qui_motivent": [
+          "beacons.gcp.gvt2.com",
+          "beacons5.gvt3.com",
+          "gslbeacon.lijit.com",
+          "beacon.krxd.net",
+          "beacon.walmart.com",
+          "beacon.sojern.com",
+          "beacon-us-iad2.rubiconproject.com"
+        ],
+        "idee_du_mini_rag_utilisee": "Familles de sous-domaines externes et motifs lexicaux génériques.",
+        "raison_de_plausibilite": "Plusieurs noms portant explicitement le motif beacon apparaissent chez quelques hôtes, ce qui est compatible avec des mécanismes de suivi, d'ads ou de télémétrie web.",
+        "alternative_legitime": "Ces requêtes peuvent simplement être le reflet d'une navigation web classique sur des sites tiers riches en tags publicitaires et analytiques.",
+        "portee_pre_chasse": "hypothese_candidate_non_testee",
+        "ce_que_l_agent_ne_conclut_pas": [
+          "je ne conclus pas à une activité malveillante",
+          "je ne conclus pas à un exfiltration",
+          "je ne conclus pas à un ciblage confirmé"
+        ]
+      },
+      {
+        "id": "H3",
+        "hypothese_dns_candidate": "Les requêtes NIMLOC aux labels très structurés pourraient refléter une génération automatisée de noms, un comportement applicatif spécifique ou un artefact protocolaire atypique observable par DNS.",
+        "comportement_dns_associe": "Type DNS rare ou inattendu, concentration sur plusieurs hôtes mais avec motifs de chaînes majuscules répétitives et peu lisibles.",
+        "indices_initiaux": [
+          "I4"
+        ],
+        "observables_dns_mobilises": [
+          "type_dns_atypique",
+          "repetition",
+          "concentration_hote",
+          "motif_lexical"
+        ],
+        "exemples_dns_qui_motivent": [
+          "FDEFFAENFDEFFCFGEFFCCACACACACAAA",
+          "FHFAEBEECACACACACACACACACACACAAA",
+          "FHEPFCELEHFCEPFFFACACACACACACABN",
+          "FDFAEMFFEOELCACACACACACACACACABN",
+          "ABACFPFPENFDECFCEPFHFDEFFPFPACAB"
+        ],
+        "idee_du_mini_rag_utilisee": "Types DNS atypiques et labels structurés longs.",
+        "raison_de_plausibilite": "Le type NIMLOC est inhabituel dans un DNS standard et plusieurs noms montrent une structure répétitive non naturelle, ce qui mérite une hypothèse prudente d'automatisation ou de protocole spécifique.",
+        "alternative_legitime": "Il peut s'agir d'un mécanisme logiciel ou matériel légitime, d'une découverte de service particulière ou d'un artefact de collecte sans signification malveillante.",
+        "portee_pre_chasse": "hypothese_candidate_non_testee",
+        "ce_que_l_agent_ne_conclut_pas": [
+          "je ne conclus pas à un DGA confirmé",
+          "je ne conclus pas à un malware confirmé",
+          "je ne conclus pas à un protocole malveillant"
+        ]
+      },
+      {
+        "id": "H4",
+        "hypothese_dns_candidate": "Des NXDomain répétés sur des noms de service interne ou de découverte pourraient refléter une recherche de suffixe, une autodécouverte interne ou une configuration DNS incomplète.",
+        "comportement_dns_associe": "Réponses NXDomain sur plusieurs noms de type wpad/sepmserver/_ldap/_msdcs et sur d'autres noms qui ressemblent à des services internes ou à des suffixes non résolus.",
+        "indices_initiaux": [
+          "I5"
+        ],
+        "observables_dns_mobilises": [
+          "reponse_dns",
+          "domaine_interne",
+          "socle_dominant",
+          "repetition"
+        ],
+        "exemples_dns_qui_motivent": [
+          "wpad.froth.ly",
+          "sepmserver.froth.ly",
+          "_ldap._tcp.dc._msdcs.froth.ly",
+          "canonicalizer.ucsuri.tcs",
+          "acph.cisco.com"
+        ],
+        "idee_du_mini_rag_utilisee": "NXDomain répétés et faux positifs fréquents liés aux suffix searches ou à l'infrastructure interne.",
+        "raison_de_plausibilite": "Les mêmes types de noms reviennent avec des NXDomain sur plusieurs hôtes, ce qui est compatible avec une tentative répétée de résolution d'un nom attendu mais absent.",
+        "alternative_legitime": "Cela peut simplement traduire une mauvaise configuration, une absence d'enregistrement DNS ou une autodécouverte normale qui échoue dans cet environnement.",
+        "portee_pre_chasse": "hypothese_candidate_non_testee",
+        "ce_que_l_agent_ne_conclut_pas": [
+          "je ne conclus pas à un scan agressif",
+          "je ne conclus pas à un empoisonnement DNS",
+          "je ne conclus pas à une compromission"
+        ]
+      },
+      {
+        "id": "H5",
+        "hypothese_dns_candidate": "Des FQDN très longs ou hachés pourraient correspondre à de la télémétrie, du cache-busting, de l'ads/trackers ou à des résolutions automatisées externes observables uniquement au DNS.",
+        "comportement_dns_associe": "Noms très structurés et parfois quasi aléatoires, observés de façon ponctuelle sur un petit nombre d'hôtes, avec plusieurs domaines tiers spécialisés.",
+        "indices_initiaux": [
+          "I6"
+        ],
+        "observables_dns_mobilises": [
+          "fqdn_long_ou_structure",
+          "rarete",
+          "concentration_hote",
+          "domaine_externe"
+        ],
+        "exemples_dns_qui_motivent": [
+          "879887d424ef8a62209c16f528160e1c.nrb.footprintdns.com",
+          "0ca2d88086f590eee3004422079093b3.nrb.footprintdns.com",
+          "83581efc9ae23fefc23c26d7a3e1b557.clo.footprintdns.com",
+          "p4-csddrc45xqiym-xmvtplcdqchjqs5r-322917-i1.stbcast2-stb.metric.gstatic.com",
+          "p4-csddrc45xqiym-xmvtplcdqchjqs5r-322917-i2.anycast-stb.metric.gstatic.com",
+          "kryhc2bcmcf40cyka1ub3tq8-wpengine.netdna-ssl.com"
+        ],
+        "idee_du_mini_rag_utilisee": "FQDN longs ou labels structurés, domaines externes rares et concentration par hôte.",
+        "raison_de_plausibilite": "La forme des noms est très structurée et leur occurrence est limitée, ce qui ressemble à des identifiants de suivi, de cache ou de télémétrie plus qu'à des noms saisis manuellement.",
+        "alternative_legitime": "Il peut s'agir de CDN, de mécanismes de distribution de contenu ou de services analytiques tout à fait bénins.",
+        "portee_pre_chasse": "hypothese_candidate_non_testee",
+        "ce_que_l_agent_ne_conclut_pas": [
+          "je ne conclus pas à une infrastructure malveillante",
+          "je ne conclus pas à un exfiltration",
+          "je ne conclus pas à une preuve de suivi hostile"
+        ]
+      }
+    ],
+    "controle_pre_chasse": {
+      "analyse_limitee_aux_logs_dns": "oui",
+      "mini_rag_general_sans_verite_terrain": "oui",
+      "aucun_csv_partiel": "oui",
+      "aucune_requete_spl": "oui",
+      "aucun_plan_de_chasse": "oui",
+      "aucun_pivot": "oui",
+      "aucune_chronologie": "oui",
+      "aucune_confirmation": "oui",
+      "aucune_refutation": "oui",
+      "aucun_verdict": "oui"
+    },
+    "limites": [
+      "Le CSV contient un socle environnemental très dominant; la fréquence seule n'est pas un critère de suspicion.",
+      "Plusieurs observables sont ambigus par nature DNS (tracking, CDN, autodécouverte, télémétrie, misconfiguration) et doivent rester des hypothèses candidates.",
+      "Sans contexte endpoint/service, je ne peux pas attribuer avec certitude les noms structurés, les NXDomain ou les types DNS atypiques à un scénario précis.",
+      "Je n'utilise aucun enrichissement externe ni renseignement hors CSV."
+    ],
+    "conclusion_pre_chasse": "J'ai isolé le socle DNS dominant et formulé uniquement des hypothèses candidates prudentes, ancrées dans des observables réellement présents dans le CSV, sans plan de chasse ni verdict."
+  }
+}
