@@ -1,27 +1,39 @@
-# Pré-chasse DNS V3 — agents séparés avec debug
+# Agent de pré-chasse non guidé
 
-Cette version garde les deux agents séparés et ajoute une gestion robuste des erreurs JSON.
+Ce dépôt contient l'implémentation de la configuration non guidée
+de l'agent de pré-chasse développée dans le cadre du projet de maîtrise :
 
-## Améliorations V3
+**Conception et évaluation d’un système intelligent en deux phases
+pour l’automatisation de la pré-chasse et de la chasse aux menaces**
 
-- sauvegarde toujours la réponse brute dans `resultats/debug_output_text_...txt`;
-- sauvegarde l'objet complet OpenAI dans `resultats/debug_response_object_...json`;
-- ajoute `reasoning_effort` dans les métadonnées du rapport final;
-- ajoute une boucle légère explicite de pré-chasse dans les prompts;
-- permet de régler `--max-output-tokens`.
+## Objectif
 
-## Lancer en medium
+L'agent analyse des journaux DNS issus de BOTS v3 afin de produire
+des hypothèses candidates de chasse aux menaces.
+
+Dans cette configuration, aucun guide de connaissances DNS
+complémentaire n'est fourni au modèle.
+
+## Fonctionnement
+
+1. Le script charge les consignes et le schéma JSON.
+2. Le fichier CSV est transmis à l'API OpenAI.
+3. Le LLM utilise Code Interpreter pour explorer les données.
+4. Les observations sont utilisées pour formuler des hypothèses candidates.
+5. Le rapport final est enregistré au format JSON.
+
+## Structure
+
+- `agent_non_guide.py` : point d'entrée
+- `core_prechasse.py` : appel API et orchestration
+- `prompts/non_guide.txt` : consignes de l'agent
+- `schema_sortie.json` : structure JSON attendue
+- `data/` : emplacement du fichier DNS
+- `resultats/` : résultats conservés
+
+## Installation
 
 ```powershell
-python .\agent_non_guide.py --csv "C:\Users\burle\Downloads\botsv3_dns_complet.csv" --raisonnement medium
-python .\agent_guide_dns.py --csv "C:\Users\burle\Downloads\botsv3_dns_complet.csv" --raisonnement medium
-```
-
-## En cas d'erreur JSON
-
-Regarder ou envoyer les fichiers créés dans `resultats` :
-
-```text
-debug_output_text_...
-debug_response_object_...
-```
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
