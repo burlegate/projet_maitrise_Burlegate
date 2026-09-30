@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "date_utc": "2026-07-21T03:53:04.809816+00:00",
+    "mode": "non_guide",
+    "model": "gpt-5.4-mini",
+    "reasoning_effort": "medium",
+    "max_output_tokens": 20000,
+    "csv": "C:\\Users\\burle\\Downloads\\botsv3_dns_complet.csv",
+    "csv_name": "botsv3_dns_complet.csv",
+    "response_id": "resp_0c1120d56cf9d8af016a5eeca05afc819e9f855d1d679ccb1a",
+    "debug_output_text": "C:\\Users\\burle\\Downloads\\prechasse_dns_v3_debug\\prechasse_dns_v3_debug\\resultats\\debug_output_text_non_guide_20260721T035304Z.txt",
+    "debug_response_object": "C:\\Users\\burle\\Downloads\\prechasse_dns_v3_debug\\prechasse_dns_v3_debug\\resultats\\debug_response_object_non_guide_20260721T035304Z.json",
+    "note": "Le script local téléverse le CSV, appelle OpenAI et sauvegarde le résultat. L’analyse est réalisée par le LLM avec son outil Python interne."
+  },
+  "rapport": {
+    "phase": "pre_chasse",
+    "mode": "non_guide",
+    "resume_dataset": {
+      "type_logs": "Logs DNS (stream:dns) exportés au format CSV/JSON imbriqué depuis BOTS v3",
+      "nombre_evenements_examines": 218456,
+      "periode_observee": "2018-08-20 05:03:42.964-0400 à 2018-08-20 11:18:00.966-0400",
+      "champs_identifies": [
+        "_time",
+        "timestamp",
+        "endtime",
+        "host",
+        "host_addr",
+        "sourcetype",
+        "source",
+        "message_type",
+        "query",
+        "name",
+        "query_type",
+        "reply_code",
+        "reply_code_id",
+        "response_time",
+        "transaction_id",
+        "ttl",
+        "bytes",
+        "src_ip",
+        "src_mac",
+        "src_port",
+        "bytes_in",
+        "dest_ip",
+        "dest_mac",
+        "dest_port",
+        "bytes_out",
+        "time_taken",
+        "transport",
+        "flow_id",
+        "protocol_stack"
+      ]
+    },
+    "indices_observes": [
+      {
+        "id": "I1",
+        "observation": "Un volume notable de requêtes NIMLOC sur UDP/137 vise des adresses de broadcast ou de réseau local, avec des noms encodés en chaînes alphabétiques majuscules de 32 caractères environ.",
+        "justification_dans_les_donnees": "On observe 2 937 événements NIMLOC, avec dest_port=137 et src_port=137, transport=udp, et des destinations comme 192.168.247.255, 192.168.247.2, 172.16.133.255 ou 172.16.197.255. Exemples de noms: FDEFFAENFDEFFCFGEFFCCACACACACAAA, FHFAEBEECACACACACACACACACACACAAA, FHEPFCELEHFCEPFFFACACACACACACABN.",
+        "exemples_representatifs": [
+          "FDEFFAENFDEFFCFGEFFCCACACACACAAA -> 192.168.247.255 / UDP 137",
+          "FHFAEBEECACACACACACACACACACACAAA -> 192.168.247.255 ou 192.168.247.2 / UDP 137",
+          "FHEPFCELEHFCEPFFFACACACACACACABN -> 172.16.133.255 / UDP 137"
+        ],
+        "niveau_confiance": "eleve"
+      },
+      {
+        "id": "I2",
+        "observation": "splunk.froth.ly concentre un très grand nombre de requêtes provenant de nombreux hôtes internes, avec des réponses majoritairement NoError et surtout des types A/AAAA.",
+        "justification_dans_les_donnees": "splunk.froth.ly apparaît comme le domaine le plus fréquent côté requêtes, avec 130 497 occurrences côté QUERY et des sources multiples (par ex. 172.16.0.109, 172.31.38.181, 172.31.12.76, 172.16.0.178, 192.168.247.129). Les réponses associées sont presque toutes NoError (130 044 réponses NoError observées pour ce nom).",
+        "exemples_representatifs": [
+          "splunk.froth.ly depuis 172.16.0.109, 172.31.38.181, 172.31.12.76",
+          "types de requêtes A et AAAA dominants",
+          "réponses NoError pour la majorité des événements associés"
+        ],
+        "niveau_confiance": "eleve"
+      },
+      {
+        "id": "I3",
+        "observation": "Il existe un petit ensemble de sous-domaines froth.ly visuellement pseudo-aléatoires, peu répétés, et souvent associés à NXDomain.",
+        "justification_dans_les_donnees": "Sur froth.ly, 111 requêtes concernent 47 noms uniques atypiques; 87 de ces événements ont NXDomain. Exemples observés: cfegsjc.froth.ly, rvhogmx.froth.ly, xqnnhtb.froth.ly, bcemkuoyfkjb.froth.ly, yctpnnocyoht.froth.ly. Ces requêtes sont en UDP, de type A, et proviennent de plusieurs hôtes internes sur une plage de temps de plusieurs heures.",
+        "exemples_representatifs": [
+          "cfegsjc.froth.ly",
+          "rvhogmx.froth.ly",
+          "yctpnnocyoht.froth.ly"
+        ],
+        "niveau_confiance": "moyen"
+      },
+      {
+        "id": "I4",
+        "observation": "Le trafic DNS contient aussi de nombreux motifs compatibles avec un environnement d’entreprise Windows et cloud classique: LDAP, WPAD, SRV, PTR, Microsoft 365, AWS et domaines publics connus.",
+        "justification_dans_les_donnees": "On voit des requêtes telles que _ldap._tcp.splunk.local, _ldap._tcp.SV5._sites.dc._msdcs.splunk.local, wpad.localdomain, outlook.office365.com, ssm.us-west-1.amazonaws.com, v10.events.data.microsoft.com, google.com, gvt2.com, ainsi que des types A/AAAA/PTR/SRV/TXT et une large majorité de réponses NoError (162 202 réponses NoError au total).",
+        "exemples_representatifs": [
+          "_ldap._tcp.splunk.local",
+          "wpad.localdomain",
+          "outlook.office365.com",
+          "ssm.us-west-1.amazonaws.com"
+        ],
+        "niveau_confiance": "eleve"
+      }
+    ],
+    "hypotheses_candidates": [
+      {
+        "id": "H1",
+        "affirmation": "Une grande partie du trafic reflète une activité DNS d’entreprise routinière, mêlant découverte de services internes, résolution de postes Windows et accès à des services cloud publics.",
+        "indices_associes": [
+          "I2",
+          "I4"
+        ],
+        "raison_de_plausibilite": "La co-présence de splunk.froth.ly très sollicité, de requêtes LDAP/WPAD/SRV/PTR et de nombreux domaines Microsoft/AWS/Google est cohérente avec des postes ou agents d’entreprise qui résolvent des services internes et externes au quotidien.",
+        "hypothese_alternative_legitime": "Il peut aussi s’agir d’un environnement de test ou de formation où les résolutions sont volontairement très bavardes.",
+        "questions_pour_la_chasse": [
+          "Quels hôtes génèrent la majorité des requêtes externes et internes ?",
+          "Les pics de requêtes coïncident-ils avec des heures de connexion ou d’usage utilisateur ?",
+          "Les domaines consultés correspondent-ils à des services attendus dans l’inventaire de l’entreprise ?"
+        ],
+        "testabilite": "partiellement_testable"
+      },
+      {
+        "id": "H2",
+        "affirmation": "Le jeu de données contient un comportement NetBIOS/legacy name resolution important, possiblement lié à de la découverte de machines ou de services Windows sur le LAN.",
+        "indices_associes": [
+          "I1"
+        ],
+        "raison_de_plausibilite": "Le couple NIMLOC + UDP/137 + broadcast/local subnet, associé à des noms encodés sur 32 caractères, est compatible avec du trafic de résolution de noms NetBIOS ou apparenté.",
+        "hypothese_alternative_legitime": "Ce trafic peut simplement provenir de mécanismes Windows classiques de découverte de réseau, de navigation de voisinage ou de services hérités.",
+        "questions_pour_la_chasse": [
+          "Ces requêtes sont-elles concentrées sur quelques sous-réseaux ou émetteurs précis ?",
+          "Le motif est-il périodique ou corrélé à des événements utilisateur ?",
+          "Les noms encodés correspondent-ils à des machines ou services connus ?"
+        ],
+        "testabilite": "testable"
+      },
+      {
+        "id": "H3",
+        "affirmation": "Une petite fraction du trafic pourrait correspondre à un schéma de beaconing ou de tunneling DNS via des sous-domaines pseudo-aléatoires sous froth.ly.",
+        "indices_associes": [
+          "I3"
+        ],
+        "raison_de_plausibilite": "Les sous-domaines observés sont nombreux, peu répétés, ressemblent à des chaînes aléatoires et retournent souvent NXDomain, ce qui est compatible avec un mécanisme de génération de noms inhabituels.",
+        "hypothese_alternative_legitime": "Il peut aussi s’agir de fautes de frappe, de hostnames générés par des applications, ou de tests internes sans intention malveillante.",
+        "questions_pour_la_chasse": [
+          "Les intervalles entre requêtes sont-ils réguliers ou groupés en rafales ?",
+          "Les mêmes hôtes sources reviennent-ils systématiquement sur ces sous-domaines ?",
+          "La longueur/forme des labels ressemble-t-elle à un algorithme de génération ou à des tentatives humaines ?"
+        ],
+        "testabilite": "testable"
+      }
+    ],
+    "limites": [
+      "Le CSV ne contient que des logs DNS; il n’y a ni processus, ni utilisateur, ni contenu applicatif pour relier directement une requête à une activité host/process spécifique.",
+      "Plusieurs champs sont de type liste (par ex. query, name, query_type, message_type, reply_code), ce qui rend certaines lignes multi-valeurs et peut ambiguïser l’interprétation exacte d’un événement.",
+      "Le corpus couvre une fenêtre temporelle d’environ 6 heures et 14 minutes; il est insuffisant pour conclure sur une campagne de plus longue durée.",
+      "Les réponses DNS et les requêtes ne sont pas toujours parfaitement appariées dans une seule ligne, ce qui limite la reconstitution complète des échanges.",
+      "La présence d’un motif anormal n’implique pas une attaque; DNS-only ne permet pas de distinguer avec certitude un usage légitime, un agent logiciel ou un comportement hostile."
+    ],
+    "conclusion_pre_chasse": "Le CSV présente un mélange clair de DNS d’entreprise classique, de recherche NetBIOS/legacy et de quelques motifs plus atypiques sous froth.ly. Les indices justifient une chasse ciblée, mais le CSV seul ne permet ni de confirmer ni d’infirmer un scénario d’attaque."
+  }
+}
