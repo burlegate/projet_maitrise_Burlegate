@@ -1,0 +1,153 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "phase",
+    "mode",
+    "resume_dataset",
+    "indices_observes",
+    "hypotheses_candidates",
+    "limites",
+    "conclusion_pre_chasse"
+  ],
+  "properties": {
+    "phase": {
+      "type": "string",
+      "enum": [
+        "pre_chasse"
+      ]
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "non_guide",
+        "guide_dns"
+      ]
+    },
+    "resume_dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type_logs",
+        "nombre_evenements_examines",
+        "periode_observee",
+        "champs_identifies"
+      ],
+      "properties": {
+        "type_logs": {
+          "type": "string"
+        },
+        "nombre_evenements_examines": {
+          "type": "integer"
+        },
+        "periode_observee": {
+          "type": "string"
+        },
+        "champs_identifies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "indices_observes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "observation",
+          "justification_dans_les_donnees",
+          "exemples_representatifs",
+          "niveau_confiance"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "observation": {
+            "type": "string"
+          },
+          "justification_dans_les_donnees": {
+            "type": "string"
+          },
+          "exemples_representatifs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "niveau_confiance": {
+            "type": "string",
+            "enum": [
+              "faible",
+              "moyen",
+              "eleve"
+            ]
+          }
+        }
+      }
+    },
+    "hypotheses_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "affirmation",
+          "indices_associes",
+          "raison_de_plausibilite",
+          "hypothese_alternative_legitime",
+          "questions_pour_la_chasse",
+          "testabilite"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "affirmation": {
+            "type": "string"
+          },
+          "indices_associes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "raison_de_plausibilite": {
+            "type": "string"
+          },
+          "hypothese_alternative_legitime": {
+            "type": "string"
+          },
+          "questions_pour_la_chasse": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "testabilite": {
+            "type": "string",
+            "enum": [
+              "testable",
+              "partiellement_testable",
+              "non_testable_avec_ce_csv"
+            ]
+          }
+        }
+      }
+    },
+    "limites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "conclusion_pre_chasse": {
+      "type": "string"
+    }
+  }
+}
