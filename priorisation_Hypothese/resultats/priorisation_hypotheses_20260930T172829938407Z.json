@@ -1,0 +1,286 @@
+{
+  "metadata": {
+    "date_utc": "2026-09-30T17:28:29.938086+00:00",
+    "version_priorisation": "v1_priorisation_hypotheses_v9",
+    "model": "gpt-5.4-mini",
+    "reasoning_effort": "medium",
+    "max_output_tokens": 12000,
+    "source_rapport": "C:\\Users\\burle\\OneDrive\\Desktop\\prechasse_dns_v9_mini_rag\\prechasse_dns_v9_mini_rag\\prechasse_dns_v9_mini_rag\\resultats\\prechasse_v9_dns_mini_rag_20260804T042327Z.json",
+    "source_version_agent": "v9_dns_mini_rag",
+    "response_id": "resp_05b11e4b8723c075016abd46a8277487d2b0759aced991d687",
+    "principe": "Les hypothèses sont figées depuis la v9. OpenAI classe uniquement les candidats existants."
+  },
+  "hypotheses_originales_v9": [
+    {
+      "id": "H1",
+      "hypothese_dns_candidate": "Un ou plusieurs hôtes pourraient accéder à une infrastructure liée à Coinhive ou à des ressources tierces de type minage embarqué visibles par DNS.",
+      "comportement_dns_associe": "Petit volume, forte concentration sur un seul hôte, et famille de sous-domaines ws structurés sous coinhive.com.",
+      "indices_initiaux": [
+        "I2"
+      ],
+      "observables_dns_mobilises": [
+        "domaine_externe",
+        "famille_de_sous_domaines",
+        "concentration_hote",
+        "repetition",
+        "motif_lexical"
+      ],
+      "exemples_dns_qui_motivent": [
+        "coinhive.com",
+        "ws001.coinhive.com",
+        "ws005.coinhive.com",
+        "ws011.coinhive.com",
+        "ws014.coinhive.com",
+        "ws019.coinhive.com"
+      ],
+      "idee_du_mini_rag_utilisee": "Domaine externe rare avec réponse réussie, famille de sous-domaines et concentration par hôte.",
+      "raison_de_plausibilite": "La famille est observée sur un seul poste et présente des sous-domaines répétitifs et très ciblés, ce qui ressemble à un usage spécifique plutôt qu'à du bruit global.",
+      "alternative_legitime": "Un site web ou une application consultée par ce poste pourrait intégrer des scripts ou ressources externes héritées d'un ancien service sans que cela implique du minage réel.",
+      "portee_pre_chasse": "hypothese_candidate_non_testee",
+      "ce_que_l_agent_ne_conclut_pas": [
+        "je ne conclus pas à une infection",
+        "je ne conclus pas à du minage confirmé",
+        "je ne conclus pas à une preuve de charge utile"
+      ]
+    },
+    {
+      "id": "H2",
+      "hypothese_dns_candidate": "Des requêtes vers plusieurs domaines 'beacon' pourraient correspondre à du tracking, de la publicité ou à des pages web chargées avec de nombreux tags tiers, visibles au niveau DNS.",
+      "comportement_dns_associe": "Famille multi-éditeur, petits volumes par domaine mais présence répétée sur quelques hôtes, avec des noms lexicalement orientés 'beacon'.",
+      "indices_initiaux": [
+        "I3"
+      ],
+      "observables_dns_mobilises": [
+        "domaine_externe",
+        "famille_de_sous_domaines",
+        "repetition",
+        "concentration_hote",
+        "motif_lexical"
+      ],
+      "exemples_dns_qui_motivent": [
+        "beacons.gcp.gvt2.com",
+        "beacons5.gvt3.com",
+        "gslbeacon.lijit.com",
+        "beacon.krxd.net",
+        "beacon.walmart.com",
+        "beacon.sojern.com",
+        "beacon-us-iad2.rubiconproject.com"
+      ],
+      "idee_du_mini_rag_utilisee": "Familles de sous-domaines externes et motifs lexicaux génériques.",
+      "raison_de_plausibilite": "Plusieurs noms portant explicitement le motif beacon apparaissent chez quelques hôtes, ce qui est compatible avec des mécanismes de suivi, d'ads ou de télémétrie web.",
+      "alternative_legitime": "Ces requêtes peuvent simplement être le reflet d'une navigation web classique sur des sites tiers riches en tags publicitaires et analytiques.",
+      "portee_pre_chasse": "hypothese_candidate_non_testee",
+      "ce_que_l_agent_ne_conclut_pas": [
+        "je ne conclus pas à une activité malveillante",
+        "je ne conclus pas à un exfiltration",
+        "je ne conclus pas à un ciblage confirmé"
+      ]
+    },
+    {
+      "id": "H3",
+      "hypothese_dns_candidate": "Les requêtes NIMLOC aux labels très structurés pourraient refléter une génération automatisée de noms, un comportement applicatif spécifique ou un artefact protocolaire atypique observable par DNS.",
+      "comportement_dns_associe": "Type DNS rare ou inattendu, concentration sur plusieurs hôtes mais avec motifs de chaînes majuscules répétitives et peu lisibles.",
+      "indices_initiaux": [
+        "I4"
+      ],
+      "observables_dns_mobilises": [
+        "type_dns_atypique",
+        "repetition",
+        "concentration_hote",
+        "motif_lexical"
+      ],
+      "exemples_dns_qui_motivent": [
+        "FDEFFAENFDEFFCFGEFFCCACACACACAAA",
+        "FHFAEBEECACACACACACACACACACACAAA",
+        "FHEPFCELEHFCEPFFFACACACACACACABN",
+        "FDFAEMFFEOELCACACACACACACACACABN",
+        "ABACFPFPENFDECFCEPFHFDEFFPFPACAB"
+      ],
+      "idee_du_mini_rag_utilisee": "Types DNS atypiques et labels structurés longs.",
+      "raison_de_plausibilite": "Le type NIMLOC est inhabituel dans un DNS standard et plusieurs noms montrent une structure répétitive non naturelle, ce qui mérite une hypothèse prudente d'automatisation ou de protocole spécifique.",
+      "alternative_legitime": "Il peut s'agir d'un mécanisme logiciel ou matériel légitime, d'une découverte de service particulière ou d'un artefact de collecte sans signification malveillante.",
+      "portee_pre_chasse": "hypothese_candidate_non_testee",
+      "ce_que_l_agent_ne_conclut_pas": [
+        "je ne conclus pas à un DGA confirmé",
+        "je ne conclus pas à un malware confirmé",
+        "je ne conclus pas à un protocole malveillant"
+      ]
+    },
+    {
+      "id": "H4",
+      "hypothese_dns_candidate": "Des NXDomain répétés sur des noms de service interne ou de découverte pourraient refléter une recherche de suffixe, une autodécouverte interne ou une configuration DNS incomplète.",
+      "comportement_dns_associe": "Réponses NXDomain sur plusieurs noms de type wpad/sepmserver/_ldap/_msdcs et sur d'autres noms qui ressemblent à des services internes ou à des suffixes non résolus.",
+      "indices_initiaux": [
+        "I5"
+      ],
+      "observables_dns_mobilises": [
+        "reponse_dns",
+        "domaine_interne",
+        "socle_dominant",
+        "repetition"
+      ],
+      "exemples_dns_qui_motivent": [
+        "wpad.froth.ly",
+        "sepmserver.froth.ly",
+        "_ldap._tcp.dc._msdcs.froth.ly",
+        "canonicalizer.ucsuri.tcs",
+        "acph.cisco.com"
+      ],
+      "idee_du_mini_rag_utilisee": "NXDomain répétés et faux positifs fréquents liés aux suffix searches ou à l'infrastructure interne.",
+      "raison_de_plausibilite": "Les mêmes types de noms reviennent avec des NXDomain sur plusieurs hôtes, ce qui est compatible avec une tentative répétée de résolution d'un nom attendu mais absent.",
+      "alternative_legitime": "Cela peut simplement traduire une mauvaise configuration, une absence d'enregistrement DNS ou une autodécouverte normale qui échoue dans cet environnement.",
+      "portee_pre_chasse": "hypothese_candidate_non_testee",
+      "ce_que_l_agent_ne_conclut_pas": [
+        "je ne conclus pas à un scan agressif",
+        "je ne conclus pas à un empoisonnement DNS",
+        "je ne conclus pas à une compromission"
+      ]
+    },
+    {
+      "id": "H5",
+      "hypothese_dns_candidate": "Des FQDN très longs ou hachés pourraient correspondre à de la télémétrie, du cache-busting, de l'ads/trackers ou à des résolutions automatisées externes observables uniquement au DNS.",
+      "comportement_dns_associe": "Noms très structurés et parfois quasi aléatoires, observés de façon ponctuelle sur un petit nombre d'hôtes, avec plusieurs domaines tiers spécialisés.",
+      "indices_initiaux": [
+        "I6"
+      ],
+      "observables_dns_mobilises": [
+        "fqdn_long_ou_structure",
+        "rarete",
+        "concentration_hote",
+        "domaine_externe"
+      ],
+      "exemples_dns_qui_motivent": [
+        "879887d424ef8a62209c16f528160e1c.nrb.footprintdns.com",
+        "0ca2d88086f590eee3004422079093b3.nrb.footprintdns.com",
+        "83581efc9ae23fefc23c26d7a3e1b557.clo.footprintdns.com",
+        "p4-csddrc45xqiym-xmvtplcdqchjqs5r-322917-i1.stbcast2-stb.metric.gstatic.com",
+        "p4-csddrc45xqiym-xmvtplcdqchjqs5r-322917-i2.anycast-stb.metric.gstatic.com",
+        "kryhc2bcmcf40cyka1ub3tq8-wpengine.netdna-ssl.com"
+      ],
+      "idee_du_mini_rag_utilisee": "FQDN longs ou labels structurés, domaines externes rares et concentration par hôte.",
+      "raison_de_plausibilite": "La forme des noms est très structurée et leur occurrence est limitée, ce qui ressemble à des identifiants de suivi, de cache ou de télémétrie plus qu'à des noms saisis manuellement.",
+      "alternative_legitime": "Il peut s'agir de CDN, de mécanismes de distribution de contenu ou de services analytiques tout à fait bénins.",
+      "portee_pre_chasse": "hypothese_candidate_non_testee",
+      "ce_que_l_agent_ne_conclut_pas": [
+        "je ne conclus pas à une infrastructure malveillante",
+        "je ne conclus pas à un exfiltration",
+        "je ne conclus pas à une preuve de suivi hostile"
+      ]
+    }
+  ],
+  "priorisation_openai": {
+    "methode": "Priorisation qualitative par combinaison de la spécificité du signal, de la force de l’appui observé, de l’intérêt sécurité et du risque de faux positifs, en tenant compte du socle DNS dominant et des explications légitimes déjà proposées.",
+    "classement": [
+      {
+        "hypothese_id": "H1",
+        "rang": 1,
+        "interet_securite": "eleve",
+        "appui_observations": "eleve",
+        "specificite_signal": "eleve",
+        "risque_faux_positif": "modere",
+        "valeur_pour_chasse": "eleve",
+        "justification_rang": "C’est la piste la plus actionnable: petite famille de requêtes, concentration nette sur un seul hôte, et sous-domaines ws structurés sous un domaine externe rare. Le signal est suffisamment cohérent pour mériter d’être investigué en premier, malgré une alternative légitime possible liée à des ressources web tierces.",
+        "points_forts": [
+          "Concentration sur un seul hôte",
+          "Famille de sous-domaines structurée",
+          "Signal externe rare et cohérent",
+          "Bonne capacité à isoler un comportement distinct"
+        ],
+        "limites": [
+          "Une intégration web légitime reste possible",
+          "Le DNS seul ne confirme ni minage ni infection"
+        ]
+      },
+      {
+        "hypothese_id": "H3",
+        "rang": 2,
+        "interet_securite": "eleve",
+        "appui_observations": "eleve",
+        "specificite_signal": "eleve",
+        "risque_faux_positif": "modere",
+        "valeur_pour_chasse": "eleve",
+        "justification_rang": "Le type DNS NIMLOC et les labels très structurés constituent un signal atypique et peu banal, observé sur plusieurs hôtes. Même si l’explication peut être bénigne ou protocolaire, la combinaison rareté/structure en fait une piste prioritaire juste après H1.",
+        "points_forts": [
+          "Type DNS atypique",
+          "Structure répétitive et peu naturelle des labels",
+          "Présence sur plusieurs hôtes",
+          "Bon potentiel de découverte d’un mécanisme automatisé"
+        ],
+        "limites": [
+          "Peut être un artefact de collecte ou un mécanisme légitime",
+          "L’interprétation malveillante n’est pas établie"
+        ]
+      },
+      {
+        "hypothese_id": "H2",
+        "rang": 3,
+        "interet_securite": "modere",
+        "appui_observations": "modere",
+        "specificite_signal": "modere",
+        "risque_faux_positif": "eleve",
+        "valeur_pour_chasse": "modere",
+        "justification_rang": "La famille de domaines ‘beacon’ est assez lisible et multi-éditeur, ce qui donne un signal exploitable, mais les explications bénignes de tracking, publicité ou télémétrie sont fortes. La piste reste intéressante pour cartographier l’activité web, sans être la plus prioritaire.",
+        "points_forts": [
+          "Motif lexical explicite 'beacon'",
+          "Famille multi-éditeur",
+          "Signal répétitif sur quelques hôtes",
+          "Peut révéler du suivi tiers ou des tags web"
+        ],
+        "limites": [
+          "Beaucoup d’explications légitimes possibles",
+          "Faible valeur discriminante seule"
+        ]
+      },
+      {
+        "hypothese_id": "H5",
+        "rang": 4,
+        "interet_securite": "modere",
+        "appui_observations": "modere",
+        "specificite_signal": "modere",
+        "risque_faux_positif": "eleve",
+        "valeur_pour_chasse": "modere",
+        "justification_rang": "Les FQDN longs ou hachés sont intéressants car structurés et ponctuels, mais le rapport fournit déjà des alternatives légitimes très plausibles comme CDN, cache-busting ou télémétrie. Le signal est exploitable, mais moins prioritaire que les hypothèses plus cohérentes ou plus atypiques.",
+        "points_forts": [
+          "Noms très structurés et peu manuels",
+          "Occurrences ponctuelles sur peu d’hôtes",
+          "Peut refléter des mécanismes automatisés intéressants"
+        ],
+        "limites": [
+          "Très compatible avec des services bénins",
+          "Peu discriminant sans contexte endpoint ou applicatif"
+        ]
+      },
+      {
+        "hypothese_id": "H4",
+        "rang": 5,
+        "interet_securite": "faible",
+        "appui_observations": "eleve",
+        "specificite_signal": "faible",
+        "risque_faux_positif": "eleve",
+        "valeur_pour_chasse": "faible",
+        "justification_rang": "Les NXDomain répétés sur des noms de service interne ou de découverte ressemblent d’abord à un problème de configuration, à une autodécouverte normale ou à une recherche de suffixe. Les observations sont réelles, mais le signal est peu spécifique et très exposé aux faux positifs.",
+        "points_forts": [
+          "NXDomain répétés et mesurables",
+          "Noms de service/découverte clairement identifiables",
+          "Peut signaler un comportement de résolution récurrent"
+        ],
+        "limites": [
+          "Forte probabilité d’explication bénigne",
+          "Spécificité faible",
+          "Peu de valeur prioritaire pour une chasse immédiate"
+        ]
+      }
+    ],
+    "synthese_priorisation": "La priorité va aux signaux les plus spécifiques et les moins réductibles à du bruit DNS courant: H1 en premier, puis H3. H2 et H5 restent intéressantes mais davantage compatibles avec du trafic web/tiers légitime. H4 est le moins prioritaire car ses NXDomain s’expliquent facilement par des causes bénignes ou de configuration."
+  },
+  "resultat_priorisation": {
+    "hypothese_prioritaire_id": "H1",
+    "ordre_ids": [
+      "H1",
+      "H3",
+      "H2",
+      "H5",
+      "H4"
+    ]
+  }
+}
