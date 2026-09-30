@@ -1,0 +1,383 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "phase",
+    "mode",
+    "version_agent",
+    "base_connaissance",
+    "resume_dataset",
+    "lecture_dns_realisee",
+    "socle_dns_dominant_ou_attendu",
+    "indices_dns_observes",
+    "hypotheses_candidates",
+    "controle_pre_chasse",
+    "limites",
+    "conclusion_pre_chasse"
+  ],
+  "properties": {
+    "phase": {
+      "type": "string",
+      "enum": [
+        "pre_chasse"
+      ]
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "dns_autonome_mini_rag"
+      ]
+    },
+    "version_agent": {
+      "type": "string",
+      "enum": [
+        "v9_dns_mini_rag"
+      ]
+    },
+    "base_connaissance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type_base",
+        "role_de_la_base",
+        "regle_anti_verite_terrain",
+        "idees_generales_utilisees"
+      ],
+      "properties": {
+        "type_base": {
+          "type": "string",
+          "enum": [
+            "mini_rag_dns_general"
+          ]
+        },
+        "role_de_la_base": {
+          "type": "string"
+        },
+        "regle_anti_verite_terrain": {
+          "type": "string"
+        },
+        "idees_generales_utilisees": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "resume_dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type_logs",
+        "nombre_lignes_csv",
+        "nombre_evenements_estime",
+        "periode_observee",
+        "champs_identifies",
+        "champ_raw_inspecte",
+        "champs_dns_extraits"
+      ],
+      "properties": {
+        "type_logs": {
+          "type": "string"
+        },
+        "nombre_lignes_csv": {
+          "type": "integer"
+        },
+        "nombre_evenements_estime": {
+          "type": "integer"
+        },
+        "periode_observee": {
+          "type": "string"
+        },
+        "champs_identifies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "champ_raw_inspecte": {
+          "type": "string",
+          "enum": [
+            "oui",
+            "non",
+            "absent"
+          ]
+        },
+        "champs_dns_extraits": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "lecture_dns_realisee": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "approche_generale",
+        "dimensions_dns_observees",
+        "note_sur_autonomie"
+      ],
+      "properties": {
+        "approche_generale": {
+          "type": "string"
+        },
+        "dimensions_dns_observees": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "note_sur_autonomie": {
+          "type": "string"
+        }
+      }
+    },
+    "socle_dns_dominant_ou_attendu": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "element_dns",
+          "raison_classement_socle",
+          "exemples_dns",
+          "impact_sur_generation_hypotheses"
+        ],
+        "properties": {
+          "element_dns": {
+            "type": "string"
+          },
+          "raison_classement_socle": {
+            "type": "string"
+          },
+          "exemples_dns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "impact_sur_generation_hypotheses": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "indices_dns_observes": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 14,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "type_observable_dns",
+          "observation",
+          "justification_dans_les_donnees",
+          "exemples_dns",
+          "interpretation_initiale_pre_chasse"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type_observable_dns": {
+            "type": "string",
+            "enum": [
+              "socle_dominant",
+              "rarete",
+              "domaine_externe",
+              "domaine_interne",
+              "fqdn_long_ou_structure",
+              "type_dns_atypique",
+              "reponse_dns",
+              "concentration_hote",
+              "repetition",
+              "famille_de_sous_domaines",
+              "motif_lexical",
+              "autre"
+            ]
+          },
+          "observation": {
+            "type": "string"
+          },
+          "justification_dans_les_donnees": {
+            "type": "string"
+          },
+          "exemples_dns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "interpretation_initiale_pre_chasse": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "hypotheses_candidates": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "hypothese_dns_candidate",
+          "comportement_dns_associe",
+          "indices_initiaux",
+          "observables_dns_mobilises",
+          "exemples_dns_qui_motivent",
+          "idee_du_mini_rag_utilisee",
+          "raison_de_plausibilite",
+          "alternative_legitime",
+          "portee_pre_chasse",
+          "ce_que_l_agent_ne_conclut_pas"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "hypothese_dns_candidate": {
+            "type": "string"
+          },
+          "comportement_dns_associe": {
+            "type": "string"
+          },
+          "indices_initiaux": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "observables_dns_mobilises": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "exemples_dns_qui_motivent": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "idee_du_mini_rag_utilisee": {
+            "type": "string"
+          },
+          "raison_de_plausibilite": {
+            "type": "string"
+          },
+          "alternative_legitime": {
+            "type": "string"
+          },
+          "portee_pre_chasse": {
+            "type": "string",
+            "enum": [
+              "hypothese_candidate_non_testee"
+            ]
+          },
+          "ce_que_l_agent_ne_conclut_pas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "controle_pre_chasse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analyse_limitee_aux_logs_dns",
+        "mini_rag_general_sans_verite_terrain",
+        "aucun_csv_partiel",
+        "aucune_requete_spl",
+        "aucun_plan_de_chasse",
+        "aucun_pivot",
+        "aucune_chronologie",
+        "aucune_confirmation",
+        "aucune_refutation",
+        "aucun_verdict"
+      ],
+      "properties": {
+        "analyse_limitee_aux_logs_dns": {
+          "type": "string",
+          "enum": [
+            "oui"
+          ]
+        },
+        "mini_rag_general_sans_verite_terrain": {
+          "type": "string",
+          "enum": [
+            "oui"
+          ]
+        },
+        "aucun_csv_partiel": {
+          "type": "string",
+          "enum": [
+            "oui"
+          ]
+        },
+        "aucune_requete_spl": {
+          "type": "string",
+          "enum": [
+            "oui"
+          ]
+        },
+        "aucun_plan_de_chasse": {
+          "type": "string",
+          "enum": [
+            "oui"
+          ]
+        },
+        "aucun_pivot": {
+          "type": "string",
+          "enum": [
+            "oui"
+          ]
+        },
+        "aucune_chronologie": {
+          "type": "string",
+          "enum": [
+            "oui"
+          ]
+        },
+        "aucune_confirmation": {
+          "type": "string",
+          "enum": [
+            "oui"
+          ]
+        },
+        "aucune_refutation": {
+          "type": "string",
+          "enum": [
+            "oui"
+          ]
+        },
+        "aucun_verdict": {
+          "type": "string",
+          "enum": [
+            "oui"
+          ]
+        }
+      }
+    },
+    "limites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "conclusion_pre_chasse": {
+      "type": "string"
+    }
+  }
+}
