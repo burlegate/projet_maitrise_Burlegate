@@ -1,0 +1,59 @@
+{
+  "hypothese_source": "pre_chasse",
+  "hypothese_id": "H3",
+  "hypothese_originale": "Les requêtes NIMLOC aux labels très structurés pourraient refléter une génération automatisée de noms, un comportement applicatif spécifique ou un artefact protocolaire atypique observable par DNS.",
+  "hypothese_complete": {
+    "id": "H3",
+    "hypothese_dns_candidate": "Les requêtes NIMLOC aux labels très structurés pourraient refléter une génération automatisée de noms, un comportement applicatif spécifique ou un artefact protocolaire atypique observable par DNS.",
+    "comportement_dns_associe": "Type DNS rare ou inattendu, concentration sur plusieurs hôtes mais avec motifs de chaînes majuscules répétitives et peu lisibles.",
+    "indices_initiaux": [
+      "I4"
+    ],
+    "observables_dns_mobilises": [
+      "type_dns_atypique",
+      "repetition",
+      "concentration_hote",
+      "motif_lexical"
+    ],
+    "exemples_dns_qui_motivent": [
+      "FDEFFAENFDEFFCFGEFFCCACACACACAAA",
+      "FHFAEBEECACACACACACACACACACACAAA",
+      "FHEPFCELEHFCEPFFFACACACACACACABN",
+      "FDFAEMFFEOELCACACACACACACACACABN",
+      "ABACFPFPENFDECFCEPFHFDEFFPFPACAB"
+    ],
+    "idee_du_mini_rag_utilisee": "Types DNS atypiques et labels structurés longs.",
+    "raison_de_plausibilite": "Le type NIMLOC est inhabituel dans un DNS standard et plusieurs noms montrent une structure répétitive non naturelle, ce qui mérite une hypothèse prudente d'automatisation ou de protocole spécifique.",
+    "alternative_legitime": "Il peut s'agir d'un mécanisme logiciel ou matériel légitime, d'une découverte de service particulière ou d'un artefact de collecte sans signification malveillante.",
+    "portee_pre_chasse": "hypothese_candidate_non_testee",
+    "ce_que_l_agent_ne_conclut_pas": [
+      "je ne conclus pas à un DGA confirmé",
+      "je ne conclus pas à un malware confirmé",
+      "je ne conclus pas à un protocole malveillant"
+    ]
+  },
+  "indices_prechasse": [
+    {
+      "id": "I4",
+      "type_observable_dns": "type_dns_atypique",
+      "observation": "Le type NIMLOC apparaît en volume non négligeable et produit des labels très structurés, souvent majuscules et répétitifs.",
+      "justification_dans_les_donnees": "NIMLOC compte 3363 événements sur 19 hôtes; plusieurs noms suivent le motif F/E/C/A avec des séquences répétées comme CACA...",
+      "exemples_dns": [
+        "FDEFFAENFDEFFCFGEFFCCACACACACAAA",
+        "FHFAEBEECACACACACACACACACACACAAA",
+        "FHEPFCELEHFCEPFFFACACACACACACABN",
+        "FDFAEMFFEOELCACACACACACACACACABN",
+        "ABACFPFPENFDECFCEPFHFDEFFPFPACAB"
+      ],
+      "interpretation_initiale_pre_chasse": "Peut correspondre à une logique applicative/protocolaire ou à une génération automatisée de noms; un aspect DGA-like est possible mais non prouvé."
+    }
+  ],
+  "provenance": {
+    "rapport_prechasse": "prechasse_v9_dns_mini_rag_20260804T042327Z.json",
+    "sha256_rapport_prechasse": "9806bb03c684aae660b2834d013b181ca536d281ae523451c545ef0980203cc9",
+    "rapport_priorisation": "priorisation_hypotheses_20260924T031949855497Z.json",
+    "rang_H3": 1,
+    "source_inventaire": "sources_chasse.json de la V5.2 fournie",
+    "statut_observations": "Extraits du rapport de pré-chasse ; comptages et interprétations à vérifier dans les événements."
+  }
+}
