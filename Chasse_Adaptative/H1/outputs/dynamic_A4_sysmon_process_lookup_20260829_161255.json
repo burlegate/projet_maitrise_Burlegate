@@ -1,0 +1,479 @@
+{
+  "created_at_utc": "2026-08-29T20:12:55.154797+00:00",
+  "action_id": "A4",
+  "template_id": "sysmon_process_lookup",
+  "spl": "search index=botsv3 earliest=0 latest=now sourcetype=\"XmlWinEventLog:Microsoft-Windows-Sysmon/Operational\" source=\"WinEventLog:Microsoft-Windows-Sysmon/Operational\" host=\"BSTOLL-L\" (\"chrome.exe\") (\"BudStoll\" OR \"AzureAD\\\\BudStoll\")\n| rex field=_raw \"<EventID[^>]*>(?<sysmon_event_id>\\d+)</EventID>\"\n| rex field=_raw \"<Data Name='UtcTime'>(?<UtcTime>[^<]+)</Data>\"\n| rex field=_raw \"<Data Name='Image'>(?<Image>[^<]+)</Data>\"\n| rex field=_raw \"<Data Name='ParentImage'>(?<ParentImage>[^<]+)</Data>\"\n| rex field=_raw \"<Data Name='CommandLine'>(?<CommandLine>[^<]+)</Data>\"\n| rex field=_raw \"<Data Name='User'>(?<User>[^<]+)</Data>\"\n| rex field=_raw \"<Data Name='Hashes'>(?<Hashes>[^<]+)</Data>\"\n| rex field=_raw \"<Data Name='ProcessId'>(?<ProcessId>[^<]+)</Data>\"\n| rex field=_raw \"<Data Name='ParentProcessId'>(?<ParentProcessId>[^<]+)</Data>\"\n| search sysmon_event_id=\"1\"\n| search (Image=\"chrome.exe\" OR Image=\"*\\\\chrome.exe\")\n| search (User=\"*BudStoll*\" OR User=\"*BudStoll*\")\n| table _time host sourcetype source sysmon_event_id UtcTime Image ParentImage CommandLine User Hashes ProcessId ParentProcessId _raw\n| sort _time\n| head 200",
+  "result_count": 5,
+  "message_count": 0,
+  "messages": [],
+  "results": [
+    {
+      "_time": "2018-08-20 05:49:32.000 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "XmlWinEventLog:Microsoft-Windows-Sysmon/Operational",
+      "source": "WinEventLog:Microsoft-Windows-Sysmon/Operational",
+      "sysmon_event_id": "1",
+      "UtcTime": "2018-08-20 09:49:32.097",
+      "Image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "CommandLine": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" ",
+      "User": "AzureAD\\BudStoll",
+      "Hashes": "MD5=CB2A1C2EA227F0338E7F3A8BC03C3D6E,SHA256=268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+      "ProcessId": "1728",
+      "ParentProcessId": "4496",
+      "_raw": "<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider Name='Microsoft-Windows-Sysmon' Guid='{5770385F-C22A-43E0-BF4C-06F5698FFBD9}'/><EventID>1</EventID><Version>5</Version><Level>4</Level><Task>1</Task><Opcode>0</Opcode><Keywords>0x8000000000000000</Keywords><TimeCreated SystemTime='2018-08-20T09:49:32.242213100Z'/><EventRecordID>35839</EventRecordID><Correlation/><Execution ProcessID='3220' ThreadID='5748'/><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>BSTOLL-L.froth.ly</Computer><Security UserID='S-1-5-18'/></System><EventData><Data Name='UtcTime'>2018-08-20 09:49:32.097</Data><Data Name='ProcessGuid'>{EBF7A186-C024-5B58-0000-0010E3EC4A00}</Data><Data Name='ProcessId'>1728</Data><Data Name='Image'>C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe</Data><Data Name='FileVersion'>67.0.3396.99</Data><Data Name='Description'>Google Chrome</Data><Data Name='Product'>Google Chrome</Data><Data Name='Company'>Google Inc.</Data><Data Name='CommandLine'>\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" </Data><Data Name='CurrentDirectory'>C:\\Program Files (x86)\\Google\\Chrome\\Application\\</Data><Data Name='User'>AzureAD\\BudStoll</Data><Data Name='LogonGuid'>{EBF7A186-B94A-5B58-0000-002039B30400}</Data><Data Name='LogonId'>0x4b339</Data><Data Name='TerminalSessionId'>1</Data><Data Name='IntegrityLevel'>Medium</Data><Data Name='Hashes'>MD5=CB2A1C2EA227F0338E7F3A8BC03C3D6E,SHA256=268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA</Data><Data Name='ParentProcessGuid'>{EBF7A186-B94E-5B58-0000-0010593B0600}</Data><Data Name='ParentProcessId'>4496</Data><Data Name='ParentImage'>C:\\Windows\\explorer.exe</Data><Data Name='ParentCommandLine'>C:\\Windows\\Explorer.EXE</Data></EventData></Event>"
+    },
+    {
+      "_time": "2018-08-20 06:37:08.000 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "XmlWinEventLog:Microsoft-Windows-Sysmon/Operational",
+      "source": "WinEventLog:Microsoft-Windows-Sysmon/Operational",
+      "sysmon_event_id": "1",
+      "UtcTime": "2018-08-20 10:37:08.222",
+      "Image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "CommandLine": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" ",
+      "User": "AzureAD\\BudStoll",
+      "Hashes": "MD5=CB2A1C2EA227F0338E7F3A8BC03C3D6E,SHA256=268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+      "ProcessId": "7560",
+      "ParentProcessId": "4496",
+      "_raw": "<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider Name='Microsoft-Windows-Sysmon' Guid='{5770385F-C22A-43E0-BF4C-06F5698FFBD9}'/><EventID>1</EventID><Version>5</Version><Level>4</Level><Task>1</Task><Opcode>0</Opcode><Keywords>0x8000000000000000</Keywords><TimeCreated SystemTime='2018-08-20T10:37:08.357382000Z'/><EventRecordID>35877</EventRecordID><Correlation/><Execution ProcessID='3220' ThreadID='5748'/><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>BSTOLL-L.froth.ly</Computer><Security UserID='S-1-5-18'/></System><EventData><Data Name='UtcTime'>2018-08-20 10:37:08.222</Data><Data Name='ProcessGuid'>{EBF7A186-CB4C-5B58-0000-001005FD9B00}</Data><Data Name='ProcessId'>7560</Data><Data Name='Image'>C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe</Data><Data Name='FileVersion'>67.0.3396.99</Data><Data Name='Description'>Google Chrome</Data><Data Name='Product'>Google Chrome</Data><Data Name='Company'>Google Inc.</Data><Data Name='CommandLine'>\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" </Data><Data Name='CurrentDirectory'>C:\\Program Files (x86)\\Google\\Chrome\\Application\\</Data><Data Name='User'>AzureAD\\BudStoll</Data><Data Name='LogonGuid'>{EBF7A186-B94A-5B58-0000-002039B30400}</Data><Data Name='LogonId'>0x4b339</Data><Data Name='TerminalSessionId'>1</Data><Data Name='IntegrityLevel'>Medium</Data><Data Name='Hashes'>MD5=CB2A1C2EA227F0338E7F3A8BC03C3D6E,SHA256=268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA</Data><Data Name='ParentProcessGuid'>{EBF7A186-B94E-5B58-0000-0010593B0600}</Data><Data Name='ParentProcessId'>4496</Data><Data Name='ParentImage'>C:\\Windows\\explorer.exe</Data><Data Name='ParentCommandLine'>C:\\Windows\\Explorer.EXE</Data></EventData></Event>"
+    },
+    {
+      "_time": "2018-08-20 07:31:06.000 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "XmlWinEventLog:Microsoft-Windows-Sysmon/Operational",
+      "source": "WinEventLog:Microsoft-Windows-Sysmon/Operational",
+      "sysmon_event_id": "1",
+      "UtcTime": "2018-08-20 11:31:06.149",
+      "Image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "CommandLine": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" ",
+      "User": "AzureAD\\BudStoll",
+      "Hashes": "MD5=CB2A1C2EA227F0338E7F3A8BC03C3D6E,SHA256=268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+      "ProcessId": "9024",
+      "ParentProcessId": "4496",
+      "_raw": "<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider Name='Microsoft-Windows-Sysmon' Guid='{5770385F-C22A-43E0-BF4C-06F5698FFBD9}'/><EventID>1</EventID><Version>5</Version><Level>4</Level><Task>1</Task><Opcode>0</Opcode><Keywords>0x8000000000000000</Keywords><TimeCreated SystemTime='2018-08-20T11:31:06.232435700Z'/><EventRecordID>35911</EventRecordID><Correlation/><Execution ProcessID='3220' ThreadID='5748'/><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>BSTOLL-L.froth.ly</Computer><Security UserID='S-1-5-18'/></System><EventData><Data Name='UtcTime'>2018-08-20 11:31:06.149</Data><Data Name='ProcessGuid'>{EBF7A186-D86B-5B58-0000-00104C2EE600}</Data><Data Name='ProcessId'>9024</Data><Data Name='Image'>C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe</Data><Data Name='FileVersion'>67.0.3396.99</Data><Data Name='Description'>Google Chrome</Data><Data Name='Product'>Google Chrome</Data><Data Name='Company'>Google Inc.</Data><Data Name='CommandLine'>\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" </Data><Data Name='CurrentDirectory'>C:\\Program Files (x86)\\Google\\Chrome\\Application\\</Data><Data Name='User'>AzureAD\\BudStoll</Data><Data Name='LogonGuid'>{EBF7A186-B94A-5B58-0000-002039B30400}</Data><Data Name='LogonId'>0x4b339</Data><Data Name='TerminalSessionId'>1</Data><Data Name='IntegrityLevel'>Medium</Data><Data Name='Hashes'>MD5=CB2A1C2EA227F0338E7F3A8BC03C3D6E,SHA256=268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA</Data><Data Name='ParentProcessGuid'>{EBF7A186-B94E-5B58-0000-0010593B0600}</Data><Data Name='ParentProcessId'>4496</Data><Data Name='ParentImage'>C:\\Windows\\explorer.exe</Data><Data Name='ParentCommandLine'>C:\\Windows\\Explorer.EXE</Data></EventData></Event>"
+    },
+    {
+      "_time": "2018-08-20 09:40:19.000 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "XmlWinEventLog:Microsoft-Windows-Sysmon/Operational",
+      "source": "WinEventLog:Microsoft-Windows-Sysmon/Operational",
+      "sysmon_event_id": "1",
+      "UtcTime": "2018-08-20 13:37:26.594",
+      "Image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "CommandLine": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" ",
+      "User": "AzureAD\\BudStoll",
+      "Hashes": "MD5=CB2A1C2EA227F0338E7F3A8BC03C3D6E,SHA256=268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+      "ProcessId": "9752",
+      "ParentProcessId": "6808",
+      "_raw": "<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider Name='Microsoft-Windows-Sysmon' Guid='{5770385F-C22A-43E0-BF4C-06F5698FFBD9}'/><EventID>1</EventID><Version>5</Version><Level>4</Level><Task>1</Task><Opcode>0</Opcode><Keywords>0x8000000000000000</Keywords><TimeCreated SystemTime='2018-08-20T13:40:19.337936600Z'/><EventRecordID>36902</EventRecordID><Correlation/><Execution ProcessID='6804' ThreadID='2596'/><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>BSTOLL-L.froth.ly</Computer><Security UserID='S-1-5-18'/></System><EventData><Data Name='UtcTime'>2018-08-20 13:37:26.594</Data><Data Name='ProcessGuid'>{EBF7A186-1A96-5B59-0000-0010397D1A00}</Data><Data Name='ProcessId'>9752</Data><Data Name='Image'>C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe</Data><Data Name='FileVersion'>67.0.3396.99</Data><Data Name='Description'>Google Chrome</Data><Data Name='Product'>Google Chrome</Data><Data Name='Company'>Google Inc.</Data><Data Name='CommandLine'>\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" </Data><Data Name='CurrentDirectory'>C:\\Program Files (x86)\\Google\\Chrome\\Application\\</Data><Data Name='User'>AzureAD\\BudStoll</Data><Data Name='LogonGuid'>{EBF7A186-1A26-5B59-0000-00200CC50400}</Data><Data Name='LogonId'>0x4c50c</Data><Data Name='TerminalSessionId'>1</Data><Data Name='IntegrityLevel'>Medium</Data><Data Name='Hashes'>MD5=CB2A1C2EA227F0338E7F3A8BC03C3D6E,SHA256=268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA</Data><Data Name='ParentProcessGuid'>{EBF7A186-1A32-5B59-0000-00109CFB0700}</Data><Data Name='ParentProcessId'>6808</Data><Data Name='ParentImage'>C:\\Windows\\explorer.exe</Data><Data Name='ParentCommandLine'>C:\\Windows\\Explorer.EXE</Data></EventData></Event>"
+    },
+    {
+      "_time": "2018-08-20 10:58:13.000 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "XmlWinEventLog:Microsoft-Windows-Sysmon/Operational",
+      "source": "WinEventLog:Microsoft-Windows-Sysmon/Operational",
+      "sysmon_event_id": "1",
+      "UtcTime": "2018-08-20 14:58:13.500",
+      "Image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "CommandLine": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" ",
+      "User": "AzureAD\\BudStoll",
+      "Hashes": "MD5=CB2A1C2EA227F0338E7F3A8BC03C3D6E,SHA256=268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+      "ProcessId": "3636",
+      "ParentProcessId": "4496",
+      "_raw": "<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider Name='Microsoft-Windows-Sysmon' Guid='{5770385F-C22A-43E0-BF4C-06F5698FFBD9}'/><EventID>1</EventID><Version>5</Version><Level>4</Level><Task>1</Task><Opcode>0</Opcode><Keywords>0x8000000000000000</Keywords><TimeCreated SystemTime='2018-08-20T14:58:13.563325400Z'/><EventRecordID>36755</EventRecordID><Correlation/><Execution ProcessID='3220' ThreadID='5748'/><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>BSTOLL-L.froth.ly</Computer><Security UserID='S-1-5-18'/></System><EventData><Data Name='UtcTime'>2018-08-20 14:58:13.500</Data><Data Name='ProcessGuid'>{EBF7A186-06D9-5B59-0000-0010A942F201}</Data><Data Name='ProcessId'>3636</Data><Data Name='Image'>C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe</Data><Data Name='FileVersion'>67.0.3396.99</Data><Data Name='Description'>Google Chrome</Data><Data Name='Product'>Google Chrome</Data><Data Name='Company'>Google Inc.</Data><Data Name='CommandLine'>\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" </Data><Data Name='CurrentDirectory'>C:\\Program Files (x86)\\Google\\Chrome\\Application\\</Data><Data Name='User'>AzureAD\\BudStoll</Data><Data Name='LogonGuid'>{EBF7A186-B94A-5B58-0000-002039B30400}</Data><Data Name='LogonId'>0x4b339</Data><Data Name='TerminalSessionId'>1</Data><Data Name='IntegrityLevel'>Medium</Data><Data Name='Hashes'>MD5=CB2A1C2EA227F0338E7F3A8BC03C3D6E,SHA256=268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA</Data><Data Name='ParentProcessGuid'>{EBF7A186-B94E-5B58-0000-0010593B0600}</Data><Data Name='ParentProcessId'>4496</Data><Data Name='ParentImage'>C:\\Windows\\explorer.exe</Data><Data Name='ParentCommandLine'>C:\\Windows\\Explorer.EXE</Data></EventData></Event>"
+    }
+  ],
+  "analysis": {
+    "action_id": "A4",
+    "result_count": 5,
+    "result_unit": "événement(s) Sysmon de création de processus",
+    "result_metrics": {
+      "splunk_row_count": 5,
+      "result_unit": "événement(s) Sysmon de création de processus",
+      "query_limit": 200,
+      "query_limit_reached": false,
+      "coinhive_indicator_count": 0,
+      "coinhive_domains_found": [],
+      "coinhive_ips_found": [],
+      "target_host_found": true,
+      "target_ip_found": false,
+      "target_user_found": true,
+      "target_process_found": true,
+      "blocked_event_count": 0,
+      "coinhive_event_count": 0,
+      "coinhive_blocked_event_count": 0,
+      "target_identity_event_count": 5,
+      "h1_correlated_event_count": 0
+    },
+    "evidence_level": "forte",
+    "finding_status": "preuve_endpoint_correlee_forte",
+    "evidence_category": "preuve endpoint corrélée forte avec A3",
+    "reward": 1.9,
+    "state_update": {
+      "sysmon_positive": true,
+      "endpoint_positive": true,
+      "process_chrome_found": true,
+      "host_bstoll_found": true,
+      "user_budstoll_found": true,
+      "network_flow_evidence": [
+        {
+          "row_index": 0,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "37.187.167.21",
+          "destination_domain": "ws014.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:37:34.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 1,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "217.182.164.14",
+          "destination_domain": "ws001.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:37:49.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 2,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "37.187.166.108",
+          "destination_domain": "ws011.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:38:03.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 3,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "37.187.165.41",
+          "destination_domain": "ws005.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:38:06.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 4,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "104.20.208.59",
+          "destination_domain": "coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:37:33.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 5,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "37.187.167.47",
+          "destination_domain": "ws019.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:38:37.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        }
+      ],
+      "endpoint_process_evidence": [
+        {
+          "row_index": 0,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T09:49:32.097Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 1,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T10:37:08.222Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 2,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T11:31:06.149Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 3,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:37:26.594Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 4,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T14:58:13.500Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        }
+      ],
+      "network_process_hashes": [
+        "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+      ],
+      "endpoint_process_hashes": [
+        "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+      ],
+      "network_flow_start_times_utc": [
+        "2018-08-20T13:37:33.000Z",
+        "2018-08-20T13:37:34.000Z",
+        "2018-08-20T13:37:49.000Z",
+        "2018-08-20T13:38:03.000Z",
+        "2018-08-20T13:38:06.000Z",
+        "2018-08-20T13:38:37.000Z"
+      ],
+      "endpoint_process_start_times_utc": [
+        "2018-08-20T09:49:32.097Z",
+        "2018-08-20T10:37:08.222Z",
+        "2018-08-20T11:31:06.149Z",
+        "2018-08-20T13:37:26.594Z",
+        "2018-08-20T14:58:13.500Z"
+      ],
+      "a3_a4_correlation": {
+        "hash_match": true,
+        "matching_sha256": [
+          "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+        ],
+        "closest_time_delta_seconds": 6.406,
+        "temporal_proximity_confirmed": true,
+        "correlated": true,
+        "matched_pair": {
+          "network_row_index": 4,
+          "endpoint_row_index": 3,
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+          "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+          "delta_seconds": 6.406
+        }
+      }
+    },
+    "evidence_details": {
+      "network_flow_evidence": [
+        {
+          "row_index": 0,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "37.187.167.21",
+          "destination_domain": "ws014.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:37:34.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 1,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "217.182.164.14",
+          "destination_domain": "ws001.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:37:49.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 2,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "37.187.166.108",
+          "destination_domain": "ws011.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:38:03.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 3,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "37.187.165.41",
+          "destination_domain": "ws005.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:38:06.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 4,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "104.20.208.59",
+          "destination_domain": "coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:37:33.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 5,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "37.187.167.47",
+          "destination_domain": "ws019.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:38:37.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        }
+      ],
+      "endpoint_process_evidence": [
+        {
+          "row_index": 0,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T09:49:32.097Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 1,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T10:37:08.222Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 2,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T11:31:06.149Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 3,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:37:26.594Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 4,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T14:58:13.500Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        }
+      ],
+      "network_process_hashes": [
+        "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+      ],
+      "endpoint_process_hashes": [
+        "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+      ],
+      "network_flow_start_times_utc": [
+        "2018-08-20T13:37:33.000Z",
+        "2018-08-20T13:37:34.000Z",
+        "2018-08-20T13:37:49.000Z",
+        "2018-08-20T13:38:03.000Z",
+        "2018-08-20T13:38:06.000Z",
+        "2018-08-20T13:38:37.000Z"
+      ],
+      "endpoint_process_start_times_utc": [
+        "2018-08-20T09:49:32.097Z",
+        "2018-08-20T10:37:08.222Z",
+        "2018-08-20T11:31:06.149Z",
+        "2018-08-20T13:37:26.594Z",
+        "2018-08-20T14:58:13.500Z"
+      ],
+      "a3_a4_correlation": {
+        "hash_match": true,
+        "matching_sha256": [
+          "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+        ],
+        "closest_time_delta_seconds": 6.406,
+        "temporal_proximity_confirmed": true,
+        "correlated": true,
+        "matched_pair": {
+          "network_row_index": 4,
+          "endpoint_row_index": 3,
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+          "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+          "delta_seconds": 6.406
+        }
+      }
+    },
+    "comment": "5 événement(s) Sysmon montrent Image=chrome.exe sur BSTOLL-L. Une même paire A3-A4 partage le SHA-256 268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA et un délai de 6.4 seconde(s).",
+    "cumulative_reward_after_action": 3.6
+  }
+}
