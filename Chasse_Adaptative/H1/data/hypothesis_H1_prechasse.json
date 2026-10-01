@@ -1,0 +1,20 @@
+{
+  "hypothese_source": "pre_chasse_dns_v9",
+  "hypothese_id": "H1",
+  "affirmation": "Un ou plusieurs hôtes pourraient accéder à une infrastructure liée à Coinhive ou à des ressources tierces de type minage embarqué visibles par DNS.",
+  "niveau_affirmation": "hypothese_candidate_a_valider",
+  "limite_importante": "Les logs DNS seuls ne prouvent pas l'exécution d'un mineur, une charge CPU anormale, l'ouverture d'un navigateur, ni une compromission.",
+  "indicateurs_pre_chasse": {
+    "domaines_ou_familles": [
+      "coinhive.com",
+      "ws*.coinhive.com"
+    ],
+    "exemples_observes_dns": [
+      "ws001.coinhive.com",
+      "ws005.coinhive.com",
+      "ws011.coinhive.com",
+      "ws014.coinhive.com",
+      "ws019.coinhive.com"
+    ]
+  }
+}
