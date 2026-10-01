@@ -1,0 +1,5 @@
+numpy>=1.26,<3
+gymnasium==1.2.3
+stable-baselines3==2.7.1
+sb3-contrib==2.7.1
+torch>=2.3,<3
