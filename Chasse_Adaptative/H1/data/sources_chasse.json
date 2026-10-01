@@ -1,0 +1,29 @@
+{
+  "contexte": "Sources disponibles uniquement pour la phase de chasse. Elles ne sont pas utilisées pour générer l'hypothèse de pré-chasse.",
+  "sources": [
+    {
+      "source": "stream:dns",
+      "role": "valider les résolutions DNS, hôtes sources, codes de réponse et fenêtre temporelle"
+    },
+    {
+      "source": "stream:http",
+      "role": "chercher un contexte web visible, URI, site, user-agent et statut HTTP"
+    },
+    {
+      "source": "syslog/cisconvmflowdata",
+      "role": "chercher des flux réseau enrichis avec processus, parent process, utilisateur, destination et port"
+    },
+    {
+      "source": "XmlWinEventLog:Microsoft-Windows-Sysmon/Operational",
+      "role": "chercher processus, parent, commande et connexions côté endpoint"
+    },
+    {
+      "source": "WinEventLog:Security",
+      "role": "compléter le contexte Windows, compte, processus et connexions autorisées/bloquées"
+    },
+    {
+      "source": "symantec*",
+      "role": "chercher alerte, signature, sévérité, blocage ou action EDR/antivirus"
+    }
+  ]
+}
