@@ -1,0 +1,7 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+numpy==2.5.2
+torch==2.13.0+cpu
+gymnasium==1.3.0
+stable-baselines3==2.9.0
+sb3-contrib==2.9.0
+openai>=1.0.0
