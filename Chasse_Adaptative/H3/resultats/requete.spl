@@ -1,0 +1,13 @@
+search index=botsv3 sourcetype="stream:dns" source="stream:dns" "NIMLOC"
+| spath input=_raw path=query_type{} output=h3_query_type
+| where mvfind(h3_query_type,"^NIMLOC$")>=0
+| spath input=_raw path=src_ip output=h3_src_ip
+| spath input=_raw path=dest_ip output=h3_dest_ip
+| spath input=_raw path=src_port output=h3_src_port
+| spath input=_raw path=dest_port output=h3_dest_port
+| spath input=_raw path=transport output=h3_transport
+| spath input=_raw path=query{} output=h3_query
+| spath input=_raw path=timestamp output=h3_timestamp
+| eval h3_epoch=_time
+| table _time h3_epoch host source sourcetype h3_src_ip h3_dest_ip h3_src_port h3_dest_port h3_transport h3_query h3_query_type h3_timestamp _raw
+| head 100000
