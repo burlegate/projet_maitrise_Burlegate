@@ -1,0 +1,81 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "hypothese_source",
+    "hypothese_id",
+    "hypothese_originale",
+    "role_agent_chasse",
+    "indicateurs_source",
+    "objectif_chasse",
+    "actions_recommandees",
+    "conditions_arret",
+    "notes_pour_ppo"
+  ],
+  "properties": {
+    "hypothese_source": {"type": "string", "enum": ["pre_chasse"]},
+    "hypothese_id": {"type": "string"},
+    "hypothese_originale": {"type": "string"},
+    "role_agent_chasse": {"type": "string"},
+    "indicateurs_source": {"type": "string"},
+    "objectif_chasse": {"type": "string"},
+    "actions_recommandees": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id", "nom", "type_action", "source", "objectif", "template_id", "cout_estime", "dependances", "preuve_attendue", "condition_succes", "reward_suggere", "risques_limites"
+        ],
+        "properties": {
+          "id": {"type": "string"},
+          "nom": {"type": "string"},
+          "type_action": {"type": "string", "enum": ["dns", "http", "network_flow", "endpoint", "edr", "stop", "other"]},
+          "source": {"type": "string"},
+          "objectif": {"type": "string"},
+          "template_id": {
+            "type": "string",
+            "enum": ["dns_lookup", "http_context_lookup", "cisco_nvm_flow_lookup", "sysmon_process_lookup", "windows_security_lookup", "symantec_alert_lookup", "stop_decision"]
+          },
+          "cout_estime": {"type": "integer", "minimum": 1, "maximum": 5},
+          "dependances": {"type": "array", "items": {"type": "string"}},
+          "preuve_attendue": {"type": "array", "items": {"type": "string"}},
+          "condition_succes": {"type": "string"},
+          "reward_suggere": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["positif", "neutre", "negatif"],
+            "properties": {
+              "positif": {"type": "number"},
+              "neutre": {"type": "number"},
+              "negatif": {"type": "number"}
+            }
+          },
+          "risques_limites": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "conditions_arret": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hypothese_soutenue", "hypothese_non_concluante", "continuer"],
+      "properties": {
+        "hypothese_soutenue": {"type": "string"},
+        "hypothese_non_concluante": {"type": "string"},
+        "continuer": {"type": "string"}
+      }
+    },
+    "notes_pour_ppo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["etat_recommande", "actions_interdites", "strategie_reward"],
+      "properties": {
+        "etat_recommande": {"type": "array", "items": {"type": "string"}},
+        "actions_interdites": {"type": "array", "items": {"type": "string"}},
+        "strategie_reward": {"type": "string"}
+      }
+    }
+  }
+}
