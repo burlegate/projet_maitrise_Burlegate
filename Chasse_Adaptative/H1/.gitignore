@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.venv/
+.venv-*/
+.pytest_cache/
+outputs/dynamic_*.json
+outputs/splunk_*.json
+*.log
