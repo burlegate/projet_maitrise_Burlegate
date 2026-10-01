@@ -1,0 +1,88 @@
+{
+  "version": "H1_PPO_v5_2",
+  "hypothese_source": "pre_chasse",
+  "hypothese_id": "H1",
+  "hypothese_originale": "Un ou plusieurs hôtes pourraient accéder à une infrastructure liée à Coinhive ou à des ressources tierces de type minage embarqué visibles par DNS.",
+  "role_agent_chasse": "Choisir dynamiquement les actions de validation de H1 et décider A7. Les preuves, rewards et verdicts sont calculés par des règles déterministes auditables.",
+  "contrat_observation": "hunting_policy_contract_v5.py",
+  "strategie_apprentissage": {
+    "algorithme": "MaskablePPO",
+    "masque_actions": "Répétitions interdites; A2 admissible après DNS positif; A5 admissible après Sysmon positif; A6 attend les suivis directs pertinents; A7 admissible dès qu'un verdict défendable est possible. Le masque ne sélectionne jamais l'action.",
+    "cout_par_recherche": 0.15,
+    "bonus_gain_information": "proportionnel à l'augmentation de l'indice de preuve",
+    "bonus_suivi_contextuel": "A2 (+2.0) après DNS positif + A3 négatif; A5 (+2.0) après A4 positif + A3 négatif",
+    "bonus_exploration_actions_essentielles": 0.0,
+    "note": "Les bonus sont conditionnés par les preuves observées; PPO est récompensé pour une source complémentaire pertinente et pénalisé pour une recherche inutile."
+  },
+  "actions_recommandees": [
+    {
+      "id": "A1",
+      "nom": "Vérifier les résolutions DNS vers l'infrastructure suspecte",
+      "type_action": "dns",
+      "source_cible": "stream:dns",
+      "template_id": "dns_lookup",
+      "objectif": "Confirmer des indicateurs Coinhive exacts et leur fenêtre temporelle.",
+      "reward_suggere": {"positif": 1.3, "neutre": 0.0, "negatif": -0.2}
+    },
+    {
+      "id": "A2",
+      "nom": "Chercher un contexte HTTP lié à la navigation",
+      "type_action": "http",
+      "source_cible": "stream:http",
+      "template_id": "http_context_lookup",
+      "objectif": "Devenir une branche décisive lorsque DNS est positif mais que le flux enrichi est absent.",
+      "reward_suggere": {"positif": 1.0, "neutre": 0.1, "negatif": 0.0}
+    },
+    {
+      "id": "A3",
+      "nom": "Vérifier les flux réseau enrichis Cisco NVM",
+      "type_action": "network_flow",
+      "source_cible": "syslog/cisconvmflowdata",
+      "template_id": "cisco_nvm_flow_lookup",
+      "objectif": "Relier exactement la source cible, une destination Coinhive et le champ processus pn.",
+      "reward_suggere": {"positif": 1.7, "neutre": 1.2, "negatif": -0.2}
+    },
+    {
+      "id": "A4",
+      "nom": "Vérifier le processus local avec Sysmon",
+      "type_action": "sysmon",
+      "source_cible": "XmlWinEventLog:Microsoft-Windows-Sysmon/Operational",
+      "template_id": "sysmon_process_lookup",
+      "objectif": "Confirmer Image=chrome.exe sur BSTOLL-L et corréler une même paire A3-A4 par SHA-256 et temps.",
+      "reward_suggere": {"positif": 1.9, "neutre": 1.0, "negatif": -0.2}
+    },
+    {
+      "id": "A5",
+      "nom": "Chercher les traces Windows Security",
+      "type_action": "windows_context",
+      "source_cible": "WinEventLog:Security",
+      "template_id": "windows_security_lookup",
+      "objectif": "Devenir une branche décisive lorsque l'endpoint est visible mais que la chaîne réseau est incomplète.",
+      "reward_suggere": {"positif": 1.2, "neutre": 0.4, "negatif": 0.0}
+    },
+    {
+      "id": "A6",
+      "nom": "Chercher une alerte ou un blocage EDR/Symantec",
+      "type_action": "edr",
+      "source_cible": "symantec*",
+      "template_id": "symantec_alert_lookup",
+      "objectif": "Rechercher dans un même événement blocage, Coinhive et identité H1.",
+      "reward_suggere": {"positif": 0.5, "neutre": 0.3, "negatif": 0.0}
+    },
+    {
+      "id": "A7",
+      "nom": "Arrêter l'investigation de l'hypothèse courante",
+      "type_action": "stop",
+      "source_cible": "analyse de chasse",
+      "template_id": "stop_decision",
+      "objectif": "Laisser PPO terminer dès qu'un verdict est justifié, avec un bonus pour l'arrêt correct et rapide.",
+      "reward_suggere": {"positif": 8.0, "neutre": 5.0, "negatif": -12.0}
+    }
+  ],
+  "conditions_arret": {
+    "hypothese_soutenue": "A1 DNS positif + A3 flux positif + A4 Sysmon positif + corrélation événement par événement A3-A4 confirmée.",
+    "hypothese_partiellement_soutenue": "Après au moins trois recherches, au moins deux familles directes soutiennent H1 et le score atteint 1.5, sans chaîne forte complète.",
+    "non_concluante": "Au moins quatre recherches ont été exécutées sans chaîne suffisante.",
+    "arret_premature": "A7 est choisi avant chaîne forte, avant deux familles corroborantes et avant quatre recherches."
+  }
+}
