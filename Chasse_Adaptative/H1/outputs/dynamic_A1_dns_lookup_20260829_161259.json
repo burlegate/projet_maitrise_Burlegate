@@ -1,0 +1,495 @@
+{
+  "created_at_utc": "2026-08-29T20:12:59.031413+00:00",
+  "action_id": "A1",
+  "template_id": "dns_lookup",
+  "spl": "search index=botsv3 earliest=0 latest=now sourcetype=\"stream:dns\" (\"coinhive.com\" OR \"ws001.coinhive.com\" OR \"ws005.coinhive.com\" OR \"ws011.coinhive.com\" OR \"ws014.coinhive.com\" OR \"ws019.coinhive.com\")\n| table _time host sourcetype source src src_ip dest dest_ip query answer reply_code message_type _raw\n| sort _time\n| head 200",
+  "result_count": 28,
+  "message_count": 0,
+  "messages": [],
+  "results": [
+    {
+      "_time": "2018-08-20 09:27:17.402 Eastern Daylight Time",
+      "host": "MKRAEUS-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:27:17.402291Z\",\"timestamp\":\"2018-08-20T13:27:17.402291Z\",\"host_addr\":[\"104.20.208.59\",\"104.20.209.59\"],\"message_type\":[\"RESPONSE\"],\"name\":[\"coinhive.com\",\"coinhive.com\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"transaction_id\":40843,\"ttl\":[5,5],\"bytes\":62,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":54238,\"bytes_in\":0,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":62,\"time_taken\":0,\"transport\":\"udp\",\"flow_id\":\"944c5b60-1f84-4d3d-9e86-93380cabe1f6\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:27:17.743 Eastern Daylight Time",
+      "host": "MKRAEUS-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:27:17.743541Z\",\"timestamp\":\"2018-08-20T13:27:17.743541Z\",\"host_addr\":[\"37.187.167.21\"],\"message_type\":[\"RESPONSE\"],\"name\":[\"ws014.coinhive.com\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"transaction_id\":11031,\"ttl\":[5],\"bytes\":52,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":59400,\"bytes_in\":0,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":52,\"time_taken\":0,\"transport\":\"udp\",\"flow_id\":\"1565c3a5-2778-406d-9cca-8c78e22838db\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:27:33.106 Eastern Daylight Time",
+      "host": "MKRAEUS-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:27:33.106818Z\",\"timestamp\":\"2018-08-20T13:27:33.106818Z\",\"host_addr\":[\"217.182.164.14\"],\"message_type\":[\"RESPONSE\"],\"name\":[\"ws001.coinhive.com\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"transaction_id\":63231,\"ttl\":[5],\"bytes\":52,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":59269,\"bytes_in\":0,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":52,\"time_taken\":0,\"transport\":\"udp\",\"flow_id\":\"c1cad71d-3419-4a17-99cb-c06dda9fe5c0\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:27:47.450 Eastern Daylight Time",
+      "host": "MKRAEUS-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:27:47.450047Z\",\"timestamp\":\"2018-08-20T13:27:47.450047Z\",\"host_addr\":[\"37.187.166.108\"],\"message_type\":[\"RESPONSE\"],\"name\":[\"ws011.coinhive.com\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"transaction_id\":56426,\"ttl\":[5],\"bytes\":52,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":57713,\"bytes_in\":0,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":52,\"time_taken\":0,\"transport\":\"udp\",\"flow_id\":\"5914ec50-5d7a-47a1-8ad5-b8e801cbef26\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:27:50.267 Eastern Daylight Time",
+      "host": "MKRAEUS-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:27:50.267811Z\",\"timestamp\":\"2018-08-20T13:27:50.267811Z\",\"host_addr\":[\"37.187.165.41\"],\"message_type\":[\"RESPONSE\"],\"name\":[\"ws005.coinhive.com\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"transaction_id\":11677,\"ttl\":[5],\"bytes\":52,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":60256,\"bytes_in\":0,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":52,\"time_taken\":0,\"transport\":\"udp\",\"flow_id\":\"7a74f47d-45ba-4fbd-8889-2c6f1aa1a6c2\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:28:21.622 Eastern Daylight Time",
+      "host": "MKRAEUS-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:28:21.622742Z\",\"timestamp\":\"2018-08-20T13:28:21.622742Z\",\"host_addr\":[\"37.187.167.47\"],\"message_type\":[\"RESPONSE\"],\"name\":[\"ws019.coinhive.com\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"transaction_id\":17822,\"ttl\":[5],\"bytes\":52,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":62290,\"bytes_in\":0,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":52,\"time_taken\":0,\"transport\":\"udp\",\"flow_id\":\"b8291c38-6cc9-40d6-8780-b61ade36de7f\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:28:23.193 Eastern Daylight Time",
+      "host": "MKRAEUS-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:28:23.193381Z\",\"timestamp\":\"2018-08-20T13:28:23.193381Z\",\"host_addr\":[\"104.20.209.59\",\"104.20.208.59\"],\"message_type\":[\"RESPONSE\"],\"name\":[\"coinhive.com\",\"coinhive.com\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"transaction_id\":12896,\"ttl\":[5,5],\"bytes\":62,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":49665,\"bytes_in\":0,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":62,\"time_taken\":0,\"transport\":\"udp\",\"flow_id\":\"5522baa1-e579-4841-b059-bd5e867007e7\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:37:33.910 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:37:33.910528Z\",\"timestamp\":\"2018-08-20T13:37:33.870986Z\",\"host_addr\":[\"104.20.208.59\",\"104.20.209.59\"],\"message_type\":[\"QUERY\",\"RESPONSE\"],\"name\":[\"coinhive.com\",\"coinhive.com\"],\"query\":[\"coinhive.com\"],\"query_type\":[\"A\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"response_time\":39542,\"transaction_id\":40843,\"ttl\":[5,5],\"bytes\":92,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":54238,\"bytes_in\":30,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":62,\"time_taken\":39542,\"transport\":\"udp\",\"flow_id\":\"243a5f4f-1d17-43e3-a85d-03ff94cb3509\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:37:34.251 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:37:34.251893Z\",\"timestamp\":\"2018-08-20T13:37:34.209498Z\",\"host_addr\":[\"37.187.167.21\"],\"message_type\":[\"QUERY\",\"RESPONSE\"],\"name\":[\"ws014.coinhive.com\"],\"query\":[\"ws014.coinhive.com\"],\"query_type\":[\"A\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"response_time\":42395,\"transaction_id\":11031,\"ttl\":[5],\"bytes\":88,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":59400,\"bytes_in\":36,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":52,\"time_taken\":42395,\"transport\":\"udp\",\"flow_id\":\"792e328d-92d5-405b-a2e0-3228578042da\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:37:49.615 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:37:49.615199Z\",\"timestamp\":\"2018-08-20T13:37:49.579317Z\",\"host_addr\":[\"217.182.164.14\"],\"message_type\":[\"QUERY\",\"RESPONSE\"],\"name\":[\"ws001.coinhive.com\"],\"query\":[\"ws001.coinhive.com\"],\"query_type\":[\"A\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"response_time\":35882,\"transaction_id\":63231,\"ttl\":[5],\"bytes\":88,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":59269,\"bytes_in\":36,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":52,\"time_taken\":35882,\"transport\":\"udp\",\"flow_id\":\"d49b26be-b656-4698-9d43-afd24ab3961c\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:38:03.958 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:03.958389Z\",\"timestamp\":\"2018-08-20T13:38:03.919194Z\",\"host_addr\":[\"37.187.166.108\"],\"message_type\":[\"QUERY\",\"RESPONSE\"],\"name\":[\"ws011.coinhive.com\"],\"query\":[\"ws011.coinhive.com\"],\"query_type\":[\"A\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"response_time\":39195,\"transaction_id\":56426,\"ttl\":[5],\"bytes\":88,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":57713,\"bytes_in\":36,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":52,\"time_taken\":39195,\"transport\":\"udp\",\"flow_id\":\"7e841f15-9c57-456c-871d-6520706beae3\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:38:06.776 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:06.776207Z\",\"timestamp\":\"2018-08-20T13:38:06.742858Z\",\"host_addr\":[\"37.187.165.41\"],\"message_type\":[\"QUERY\",\"RESPONSE\"],\"name\":[\"ws005.coinhive.com\"],\"query\":[\"ws005.coinhive.com\"],\"query_type\":[\"A\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"response_time\":33349,\"transaction_id\":11677,\"ttl\":[5],\"bytes\":88,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":60256,\"bytes_in\":36,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":52,\"time_taken\":33349,\"transport\":\"udp\",\"flow_id\":\"363288b1-6bd4-4b21-8fcd-ed10c950a9ff\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:38:19.359 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSRequestResponse",
+      "query": "ws014.coinhive.com",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:19.359354Z\",\"timestamp\":\"2018-08-20T13:38:19.359354Z\",\"count\":1,\"query\":\"ws014.coinhive.com\",\"reply_code\":\"NoError\",\"reply_code_id\":0}"
+    },
+    {
+      "_time": "2018-08-20 09:38:19.359 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSRequestResponse",
+      "query": "ws011.coinhive.com",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:19.359354Z\",\"timestamp\":\"2018-08-20T13:38:19.359354Z\",\"count\":1,\"query\":\"ws011.coinhive.com\",\"reply_code\":\"NoError\",\"reply_code_id\":0}"
+    },
+    {
+      "_time": "2018-08-20 09:38:19.359 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSRequestResponse",
+      "query": "ws005.coinhive.com",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:19.359354Z\",\"timestamp\":\"2018-08-20T13:38:19.359354Z\",\"count\":1,\"query\":\"ws005.coinhive.com\",\"reply_code\":\"NoError\",\"reply_code_id\":0}"
+    },
+    {
+      "_time": "2018-08-20 09:38:19.359 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSRequestResponse",
+      "query": "ws001.coinhive.com",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:19.359354Z\",\"timestamp\":\"2018-08-20T13:38:19.359354Z\",\"count\":1,\"query\":\"ws001.coinhive.com\",\"reply_code\":\"NoError\",\"reply_code_id\":0}"
+    },
+    {
+      "_time": "2018-08-20 09:38:19.359 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSRequestResponse",
+      "query": "coinhive.com",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:19.359354Z\",\"timestamp\":\"2018-08-20T13:38:19.359354Z\",\"count\":1,\"query\":\"coinhive.com\",\"reply_code\":\"NoError\",\"reply_code_id\":0}"
+    },
+    {
+      "_time": "2018-08-20 09:38:19.359 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSIntegrity",
+      "query": "ws014.coinhive.com",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:19.359354Z\",\"timestamp\":\"2018-08-20T13:38:19.359354Z\",\"count\":1,\"host_addr\":\"37.187.167.21\",\"query\":\"ws014.coinhive.com\",\"reply_code_id\":0}"
+    },
+    {
+      "_time": "2018-08-20 09:38:19.359 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSIntegrity",
+      "query": "ws011.coinhive.com",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:19.359354Z\",\"timestamp\":\"2018-08-20T13:38:19.359354Z\",\"count\":1,\"host_addr\":\"37.187.166.108\",\"query\":\"ws011.coinhive.com\",\"reply_code_id\":0}"
+    },
+    {
+      "_time": "2018-08-20 09:38:19.359 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSIntegrity",
+      "query": "ws005.coinhive.com",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:19.359354Z\",\"timestamp\":\"2018-08-20T13:38:19.359354Z\",\"count\":1,\"host_addr\":\"37.187.165.41\",\"query\":\"ws005.coinhive.com\",\"reply_code_id\":0}"
+    },
+    {
+      "_time": "2018-08-20 09:38:19.359 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSIntegrity",
+      "query": "ws001.coinhive.com",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:19.359354Z\",\"timestamp\":\"2018-08-20T13:38:19.359354Z\",\"count\":1,\"host_addr\":\"217.182.164.14\",\"query\":\"ws001.coinhive.com\",\"reply_code_id\":0}"
+    },
+    {
+      "_time": "2018-08-20 09:38:19.359 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSIntegrity",
+      "query": "coinhive.com",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:19.359354Z\",\"timestamp\":\"2018-08-20T13:38:19.359354Z\",\"count\":1,\"host_addr\":\"104.20.208.59\",\"query\":\"coinhive.com\",\"reply_code_id\":0}"
+    },
+    {
+      "_time": "2018-08-20 09:38:38.131 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:38.131218Z\",\"timestamp\":\"2018-08-20T13:38:38.089692Z\",\"host_addr\":[\"37.187.167.47\"],\"message_type\":[\"QUERY\",\"RESPONSE\"],\"name\":[\"ws019.coinhive.com\"],\"query\":[\"ws019.coinhive.com\"],\"query_type\":[\"A\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"response_time\":41526,\"transaction_id\":17822,\"ttl\":[5],\"bytes\":88,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":62290,\"bytes_in\":36,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":52,\"time_taken\":41526,\"transport\":\"udp\",\"flow_id\":\"b6a92caf-03c0-47b1-adac-3438a9c981b8\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:38:39.701 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:dns",
+      "src_ip": "192.168.247.131",
+      "dest_ip": "192.168.247.2",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:38:39.701696Z\",\"timestamp\":\"2018-08-20T13:38:39.653586Z\",\"host_addr\":[\"104.20.209.59\",\"104.20.208.59\"],\"message_type\":[\"QUERY\",\"RESPONSE\"],\"name\":[\"coinhive.com\",\"coinhive.com\"],\"query\":[\"coinhive.com\"],\"query_type\":[\"A\"],\"reply_code\":\"NoError\",\"reply_code_id\":0,\"response_time\":48110,\"transaction_id\":12896,\"ttl\":[5,5],\"bytes\":92,\"src_ip\":\"192.168.247.131\",\"src_mac\":\"00:0C:29:B8:44:5E\",\"src_port\":49665,\"bytes_in\":30,\"dest_ip\":\"192.168.247.2\",\"dest_mac\":\"00:50:56:FC:B4:DF\",\"dest_port\":53,\"bytes_out\":62,\"time_taken\":48110,\"transport\":\"udp\",\"flow_id\":\"52fc73af-eeb3-4a88-b83a-63bff95d434a\",\"protocol_stack\":\"ip:udp:dns\"}"
+    },
+    {
+      "_time": "2018-08-20 09:39:20.185 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSRequestResponse",
+      "query": "ws019.coinhive.com",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:39:20.185044Z\",\"timestamp\":\"2018-08-20T13:39:20.185044Z\",\"count\":1,\"query\":\"ws019.coinhive.com\",\"reply_code\":\"NoError\",\"reply_code_id\":0}"
+    },
+    {
+      "_time": "2018-08-20 09:39:20.185 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSRequestResponse",
+      "query": "coinhive.com",
+      "reply_code": "NoError",
+      "_raw": "{\"endtime\":\"2018-08-20T13:39:20.185044Z\",\"timestamp\":\"2018-08-20T13:39:20.185044Z\",\"count\":1,\"query\":\"coinhive.com\",\"reply_code\":\"NoError\",\"reply_code_id\":0}"
+    },
+    {
+      "_time": "2018-08-20 09:39:20.185 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSIntegrity",
+      "query": "ws019.coinhive.com",
+      "_raw": "{\"endtime\":\"2018-08-20T13:39:20.185044Z\",\"timestamp\":\"2018-08-20T13:39:20.185044Z\",\"count\":1,\"host_addr\":\"37.187.167.47\",\"query\":\"ws019.coinhive.com\",\"reply_code_id\":0}"
+    },
+    {
+      "_time": "2018-08-20 09:39:20.185 Eastern Daylight Time",
+      "host": "BSTOLL-L",
+      "sourcetype": "stream:dns",
+      "source": "stream:Splunk_DNSIntegrity",
+      "query": "coinhive.com",
+      "_raw": "{\"endtime\":\"2018-08-20T13:39:20.185044Z\",\"timestamp\":\"2018-08-20T13:39:20.185044Z\",\"count\":1,\"host_addr\":\"104.20.209.59\",\"query\":\"coinhive.com\",\"reply_code_id\":0}"
+    }
+  ],
+  "analysis": {
+    "action_id": "A1",
+    "result_count": 28,
+    "result_unit": "événement(s) DNS",
+    "result_metrics": {
+      "splunk_row_count": 28,
+      "result_unit": "événement(s) DNS",
+      "query_limit": 200,
+      "query_limit_reached": false,
+      "coinhive_indicator_count": 12,
+      "coinhive_domains_found": [
+        "coinhive.com",
+        "ws001.coinhive.com",
+        "ws005.coinhive.com",
+        "ws011.coinhive.com",
+        "ws014.coinhive.com",
+        "ws019.coinhive.com"
+      ],
+      "coinhive_ips_found": [
+        "104.20.208.59",
+        "217.182.164.14",
+        "37.187.165.41",
+        "37.187.166.108",
+        "37.187.167.21",
+        "37.187.167.47"
+      ],
+      "target_host_found": true,
+      "target_ip_found": true,
+      "target_user_found": false,
+      "target_process_found": false,
+      "blocked_event_count": 0,
+      "coinhive_event_count": 28,
+      "coinhive_blocked_event_count": 0,
+      "target_identity_event_count": 21,
+      "h1_correlated_event_count": 0
+    },
+    "evidence_level": "positive",
+    "finding_status": "preuve_directe_ou_principale_trouvee",
+    "evidence_category": "preuve principale DNS",
+    "reward": 1.3,
+    "state_update": {
+      "dns_positive": true,
+      "coinhive_indicator_found": true,
+      "target_ip_found": true
+    },
+    "evidence_details": {
+      "network_flow_evidence": [
+        {
+          "row_index": 0,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "37.187.167.21",
+          "destination_domain": "ws014.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:37:34.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 1,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "217.182.164.14",
+          "destination_domain": "ws001.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:37:49.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 2,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "37.187.166.108",
+          "destination_domain": "ws011.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:38:03.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 3,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "37.187.165.41",
+          "destination_domain": "ws005.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:38:06.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 4,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "104.20.208.59",
+          "destination_domain": "coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:37:33.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 5,
+          "source_ip": "192.168.247.131",
+          "destination_ip": "37.187.167.47",
+          "destination_domain": "ws019.coinhive.com",
+          "process_name": "chrome.exe",
+          "user": "",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:38:37.000Z",
+          "indicator_found": true,
+          "source_is_target": true,
+          "process_is_target": true
+        }
+      ],
+      "endpoint_process_evidence": [
+        {
+          "row_index": 0,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T09:49:32.097Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 1,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T10:37:08.222Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 2,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T11:31:06.149Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 3,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T13:37:26.594Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        },
+        {
+          "row_index": 4,
+          "host": "BSTOLL-L",
+          "user": "AzureAD\\BudStoll",
+          "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "start_time_utc": "2018-08-20T14:58:13.500Z",
+          "host_is_target": true,
+          "user_is_target": true,
+          "process_is_target": true
+        }
+      ],
+      "network_process_hashes": [
+        "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+      ],
+      "endpoint_process_hashes": [
+        "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+      ],
+      "network_flow_start_times_utc": [
+        "2018-08-20T13:37:33.000Z",
+        "2018-08-20T13:37:34.000Z",
+        "2018-08-20T13:37:49.000Z",
+        "2018-08-20T13:38:03.000Z",
+        "2018-08-20T13:38:06.000Z",
+        "2018-08-20T13:38:37.000Z"
+      ],
+      "endpoint_process_start_times_utc": [
+        "2018-08-20T09:49:32.097Z",
+        "2018-08-20T10:37:08.222Z",
+        "2018-08-20T11:31:06.149Z",
+        "2018-08-20T13:37:26.594Z",
+        "2018-08-20T14:58:13.500Z"
+      ],
+      "a3_a4_correlation": {
+        "hash_match": true,
+        "matching_sha256": [
+          "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+        ],
+        "closest_time_delta_seconds": 6.406,
+        "temporal_proximity_confirmed": true,
+        "correlated": true,
+        "matched_pair": {
+          "network_row_index": 4,
+          "endpoint_row_index": 3,
+          "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+          "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+          "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+          "delta_seconds": 6.406
+        }
+      }
+    },
+    "comment": "28 événement(s) DNS contiennent un indicateur Coinhive exact.",
+    "cumulative_reward_after_action": 4.9
+  }
+}
