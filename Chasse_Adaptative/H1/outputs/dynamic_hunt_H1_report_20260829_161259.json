@@ -1,0 +1,4219 @@
+{
+  "created_at_utc": "2026-08-29T20:12:59.054098+00:00",
+  "hypothesis": "H1 Coinhive",
+  "policy_contract": {
+    "version": "H1_PPO_v5_2",
+    "observation_features": [
+      "dns_checked",
+      "dns_positive",
+      "http_checked",
+      "http_positive",
+      "flow_checked",
+      "flow_positive",
+      "sysmon_checked",
+      "sysmon_positive",
+      "windows_checked",
+      "windows_direct",
+      "edr_checked",
+      "edr_positive",
+      "a3_a4_correlation",
+      "normalized_evidence_index",
+      "supporting_source_count_norm",
+      "step_count_norm",
+      "has_dns_flow",
+      "complete_chain",
+      "sufficient_investigation",
+      "http_context",
+      "windows_context"
+    ],
+    "action_ids": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6",
+      "A7"
+    ]
+  },
+  "final_verdict": {
+    "verdict": "hypothese_soutenue",
+    "confidence": "forte",
+    "reason": "H1 est soutenue par DNS, flux Cisco NVM et processus Sysmon corrélé à A3 par le même SHA-256 et une proximité temporelle."
+  },
+  "final_state": {
+    "dns_positive": true,
+    "http_positive": false,
+    "http_context_found": false,
+    "network_flow_positive": true,
+    "sysmon_positive": true,
+    "endpoint_positive": true,
+    "windows_direct_found": false,
+    "windows_context_found": false,
+    "edr_indirect": false,
+    "coinhive_indicator_found": true,
+    "process_chrome_found": true,
+    "user_budstoll_found": true,
+    "host_bstoll_found": true,
+    "target_ip_found": true,
+    "network_flow_evidence": [
+      {
+        "row_index": 0,
+        "source_ip": "192.168.247.131",
+        "destination_ip": "37.187.167.21",
+        "destination_domain": "ws014.coinhive.com",
+        "process_name": "chrome.exe",
+        "user": "",
+        "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+        "start_time_utc": "2018-08-20T13:37:34.000Z",
+        "indicator_found": true,
+        "source_is_target": true,
+        "process_is_target": true
+      },
+      {
+        "row_index": 1,
+        "source_ip": "192.168.247.131",
+        "destination_ip": "217.182.164.14",
+        "destination_domain": "ws001.coinhive.com",
+        "process_name": "chrome.exe",
+        "user": "",
+        "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+        "start_time_utc": "2018-08-20T13:37:49.000Z",
+        "indicator_found": true,
+        "source_is_target": true,
+        "process_is_target": true
+      },
+      {
+        "row_index": 2,
+        "source_ip": "192.168.247.131",
+        "destination_ip": "37.187.166.108",
+        "destination_domain": "ws011.coinhive.com",
+        "process_name": "chrome.exe",
+        "user": "",
+        "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+        "start_time_utc": "2018-08-20T13:38:03.000Z",
+        "indicator_found": true,
+        "source_is_target": true,
+        "process_is_target": true
+      },
+      {
+        "row_index": 3,
+        "source_ip": "192.168.247.131",
+        "destination_ip": "37.187.165.41",
+        "destination_domain": "ws005.coinhive.com",
+        "process_name": "chrome.exe",
+        "user": "",
+        "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+        "start_time_utc": "2018-08-20T13:38:06.000Z",
+        "indicator_found": true,
+        "source_is_target": true,
+        "process_is_target": true
+      },
+      {
+        "row_index": 4,
+        "source_ip": "192.168.247.131",
+        "destination_ip": "104.20.208.59",
+        "destination_domain": "coinhive.com",
+        "process_name": "chrome.exe",
+        "user": "",
+        "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+        "start_time_utc": "2018-08-20T13:37:33.000Z",
+        "indicator_found": true,
+        "source_is_target": true,
+        "process_is_target": true
+      },
+      {
+        "row_index": 5,
+        "source_ip": "192.168.247.131",
+        "destination_ip": "37.187.167.47",
+        "destination_domain": "ws019.coinhive.com",
+        "process_name": "chrome.exe",
+        "user": "",
+        "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+        "start_time_utc": "2018-08-20T13:38:37.000Z",
+        "indicator_found": true,
+        "source_is_target": true,
+        "process_is_target": true
+      }
+    ],
+    "endpoint_process_evidence": [
+      {
+        "row_index": 0,
+        "host": "BSTOLL-L",
+        "user": "AzureAD\\BudStoll",
+        "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+        "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+        "start_time_utc": "2018-08-20T09:49:32.097Z",
+        "host_is_target": true,
+        "user_is_target": true,
+        "process_is_target": true
+      },
+      {
+        "row_index": 1,
+        "host": "BSTOLL-L",
+        "user": "AzureAD\\BudStoll",
+        "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+        "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+        "start_time_utc": "2018-08-20T10:37:08.222Z",
+        "host_is_target": true,
+        "user_is_target": true,
+        "process_is_target": true
+      },
+      {
+        "row_index": 2,
+        "host": "BSTOLL-L",
+        "user": "AzureAD\\BudStoll",
+        "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+        "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+        "start_time_utc": "2018-08-20T11:31:06.149Z",
+        "host_is_target": true,
+        "user_is_target": true,
+        "process_is_target": true
+      },
+      {
+        "row_index": 3,
+        "host": "BSTOLL-L",
+        "user": "AzureAD\\BudStoll",
+        "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+        "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+        "start_time_utc": "2018-08-20T13:37:26.594Z",
+        "host_is_target": true,
+        "user_is_target": true,
+        "process_is_target": true
+      },
+      {
+        "row_index": 4,
+        "host": "BSTOLL-L",
+        "user": "AzureAD\\BudStoll",
+        "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+        "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+        "start_time_utc": "2018-08-20T14:58:13.500Z",
+        "host_is_target": true,
+        "user_is_target": true,
+        "process_is_target": true
+      }
+    ],
+    "network_process_hashes": [
+      "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+    ],
+    "endpoint_process_hashes": [
+      "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+    ],
+    "network_flow_start_times_utc": [
+      "2018-08-20T13:37:33.000Z",
+      "2018-08-20T13:37:34.000Z",
+      "2018-08-20T13:37:49.000Z",
+      "2018-08-20T13:38:03.000Z",
+      "2018-08-20T13:38:06.000Z",
+      "2018-08-20T13:38:37.000Z"
+    ],
+    "endpoint_process_start_times_utc": [
+      "2018-08-20T09:49:32.097Z",
+      "2018-08-20T10:37:08.222Z",
+      "2018-08-20T11:31:06.149Z",
+      "2018-08-20T13:37:26.594Z",
+      "2018-08-20T14:58:13.500Z"
+    ],
+    "a3_a4_correlation": {
+      "hash_match": true,
+      "matching_sha256": [
+        "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+      ],
+      "closest_time_delta_seconds": 6.406,
+      "temporal_proximity_confirmed": true,
+      "correlated": true,
+      "matched_pair": {
+        "network_row_index": 4,
+        "endpoint_row_index": 3,
+        "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+        "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+        "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+        "delta_seconds": 6.406
+      }
+    },
+    "evidence_score": 4.9,
+    "multi_source_count": 3,
+    "context_source_count": 0,
+    "stop_decision": {
+      "mode": "choisi_par_ppo",
+      "chosen_by_ppo": true,
+      "decision_source": "ppo",
+      "step": 4,
+      "reason": "PPO a choisi A7",
+      "verdict": {
+        "verdict": "hypothese_soutenue",
+        "confidence": "forte",
+        "reason": "H1 est soutenue par DNS, flux Cisco NVM et processus Sysmon corrélé à A3 par le même SHA-256 et une proximité temporelle."
+      }
+    },
+    "executed_actions": [
+      "A3",
+      "A4",
+      "A1",
+      "A7"
+    ],
+    "timeline": [
+      {
+        "action_id": "A3",
+        "result_count": 6,
+        "result_unit": "ligne(s) de flux réseau Cisco NVM",
+        "result_metrics": {
+          "splunk_row_count": 6,
+          "result_unit": "ligne(s) de flux réseau Cisco NVM",
+          "query_limit": 200,
+          "query_limit_reached": false,
+          "coinhive_indicator_count": 12,
+          "coinhive_domains_found": [
+            "coinhive.com",
+            "ws001.coinhive.com",
+            "ws005.coinhive.com",
+            "ws011.coinhive.com",
+            "ws014.coinhive.com",
+            "ws019.coinhive.com"
+          ],
+          "coinhive_ips_found": [
+            "104.20.208.59",
+            "217.182.164.14",
+            "37.187.165.41",
+            "37.187.166.108",
+            "37.187.167.21",
+            "37.187.167.47"
+          ],
+          "target_host_found": false,
+          "target_ip_found": true,
+          "target_user_found": false,
+          "target_process_found": true,
+          "blocked_event_count": 0,
+          "coinhive_event_count": 6,
+          "coinhive_blocked_event_count": 0,
+          "target_identity_event_count": 6,
+          "h1_correlated_event_count": 0
+        },
+        "evidence_level": "forte",
+        "finding_status": "preuve_directe_ou_principale_trouvee",
+        "evidence_category": "preuve principale réseau forte",
+        "reward": 1.7,
+        "cumulative_reward_after_action": 1.7,
+        "comment": "6 flux Cisco NVM relient exactement la source 192.168.247.131, une destination Coinhive et le champ pn=chrome.exe.",
+        "evidence_details": {
+          "network_flow_evidence": [
+            {
+              "row_index": 0,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.21",
+              "destination_domain": "ws014.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:34.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 1,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "217.182.164.14",
+              "destination_domain": "ws001.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:49.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 2,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.166.108",
+              "destination_domain": "ws011.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:03.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 3,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.165.41",
+              "destination_domain": "ws005.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:06.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 4,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "104.20.208.59",
+              "destination_domain": "coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:33.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 5,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.47",
+              "destination_domain": "ws019.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:37.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            }
+          ],
+          "endpoint_process_evidence": [],
+          "network_process_hashes": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "endpoint_process_hashes": [],
+          "network_flow_start_times_utc": [
+            "2018-08-20T13:37:33.000Z",
+            "2018-08-20T13:37:34.000Z",
+            "2018-08-20T13:37:49.000Z",
+            "2018-08-20T13:38:03.000Z",
+            "2018-08-20T13:38:06.000Z",
+            "2018-08-20T13:38:37.000Z"
+          ],
+          "endpoint_process_start_times_utc": [],
+          "a3_a4_correlation": {
+            "hash_match": false,
+            "matching_sha256": [],
+            "closest_time_delta_seconds": null,
+            "temporal_proximity_confirmed": false,
+            "correlated": false,
+            "matched_pair": null
+          }
+        }
+      },
+      {
+        "action_id": "A4",
+        "result_count": 5,
+        "result_unit": "événement(s) Sysmon de création de processus",
+        "result_metrics": {
+          "splunk_row_count": 5,
+          "result_unit": "événement(s) Sysmon de création de processus",
+          "query_limit": 200,
+          "query_limit_reached": false,
+          "coinhive_indicator_count": 0,
+          "coinhive_domains_found": [],
+          "coinhive_ips_found": [],
+          "target_host_found": true,
+          "target_ip_found": false,
+          "target_user_found": true,
+          "target_process_found": true,
+          "blocked_event_count": 0,
+          "coinhive_event_count": 0,
+          "coinhive_blocked_event_count": 0,
+          "target_identity_event_count": 5,
+          "h1_correlated_event_count": 0
+        },
+        "evidence_level": "forte",
+        "finding_status": "preuve_endpoint_correlee_forte",
+        "evidence_category": "preuve endpoint corrélée forte avec A3",
+        "reward": 1.9,
+        "cumulative_reward_after_action": 3.6,
+        "comment": "5 événement(s) Sysmon montrent Image=chrome.exe sur BSTOLL-L. Une même paire A3-A4 partage le SHA-256 268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA et un délai de 6.4 seconde(s).",
+        "evidence_details": {
+          "network_flow_evidence": [
+            {
+              "row_index": 0,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.21",
+              "destination_domain": "ws014.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:34.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 1,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "217.182.164.14",
+              "destination_domain": "ws001.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:49.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 2,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.166.108",
+              "destination_domain": "ws011.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:03.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 3,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.165.41",
+              "destination_domain": "ws005.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:06.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 4,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "104.20.208.59",
+              "destination_domain": "coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:33.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 5,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.47",
+              "destination_domain": "ws019.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:37.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            }
+          ],
+          "endpoint_process_evidence": [
+            {
+              "row_index": 0,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T09:49:32.097Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 1,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T10:37:08.222Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 2,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T11:31:06.149Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 3,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:26.594Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 4,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T14:58:13.500Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            }
+          ],
+          "network_process_hashes": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "endpoint_process_hashes": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "network_flow_start_times_utc": [
+            "2018-08-20T13:37:33.000Z",
+            "2018-08-20T13:37:34.000Z",
+            "2018-08-20T13:37:49.000Z",
+            "2018-08-20T13:38:03.000Z",
+            "2018-08-20T13:38:06.000Z",
+            "2018-08-20T13:38:37.000Z"
+          ],
+          "endpoint_process_start_times_utc": [
+            "2018-08-20T09:49:32.097Z",
+            "2018-08-20T10:37:08.222Z",
+            "2018-08-20T11:31:06.149Z",
+            "2018-08-20T13:37:26.594Z",
+            "2018-08-20T14:58:13.500Z"
+          ],
+          "a3_a4_correlation": {
+            "hash_match": true,
+            "matching_sha256": [
+              "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+            ],
+            "closest_time_delta_seconds": 6.406,
+            "temporal_proximity_confirmed": true,
+            "correlated": true,
+            "matched_pair": {
+              "network_row_index": 4,
+              "endpoint_row_index": 3,
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+              "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+              "delta_seconds": 6.406
+            }
+          }
+        }
+      },
+      {
+        "action_id": "A1",
+        "result_count": 28,
+        "result_unit": "événement(s) DNS",
+        "result_metrics": {
+          "splunk_row_count": 28,
+          "result_unit": "événement(s) DNS",
+          "query_limit": 200,
+          "query_limit_reached": false,
+          "coinhive_indicator_count": 12,
+          "coinhive_domains_found": [
+            "coinhive.com",
+            "ws001.coinhive.com",
+            "ws005.coinhive.com",
+            "ws011.coinhive.com",
+            "ws014.coinhive.com",
+            "ws019.coinhive.com"
+          ],
+          "coinhive_ips_found": [
+            "104.20.208.59",
+            "217.182.164.14",
+            "37.187.165.41",
+            "37.187.166.108",
+            "37.187.167.21",
+            "37.187.167.47"
+          ],
+          "target_host_found": true,
+          "target_ip_found": true,
+          "target_user_found": false,
+          "target_process_found": false,
+          "blocked_event_count": 0,
+          "coinhive_event_count": 28,
+          "coinhive_blocked_event_count": 0,
+          "target_identity_event_count": 21,
+          "h1_correlated_event_count": 0
+        },
+        "evidence_level": "positive",
+        "finding_status": "preuve_directe_ou_principale_trouvee",
+        "evidence_category": "preuve principale DNS",
+        "reward": 1.3,
+        "cumulative_reward_after_action": 4.9,
+        "comment": "28 événement(s) DNS contiennent un indicateur Coinhive exact.",
+        "evidence_details": {
+          "network_flow_evidence": [
+            {
+              "row_index": 0,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.21",
+              "destination_domain": "ws014.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:34.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 1,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "217.182.164.14",
+              "destination_domain": "ws001.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:49.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 2,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.166.108",
+              "destination_domain": "ws011.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:03.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 3,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.165.41",
+              "destination_domain": "ws005.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:06.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 4,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "104.20.208.59",
+              "destination_domain": "coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:33.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 5,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.47",
+              "destination_domain": "ws019.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:37.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            }
+          ],
+          "endpoint_process_evidence": [
+            {
+              "row_index": 0,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T09:49:32.097Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 1,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T10:37:08.222Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 2,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T11:31:06.149Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 3,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:26.594Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 4,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T14:58:13.500Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            }
+          ],
+          "network_process_hashes": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "endpoint_process_hashes": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "network_flow_start_times_utc": [
+            "2018-08-20T13:37:33.000Z",
+            "2018-08-20T13:37:34.000Z",
+            "2018-08-20T13:37:49.000Z",
+            "2018-08-20T13:38:03.000Z",
+            "2018-08-20T13:38:06.000Z",
+            "2018-08-20T13:38:37.000Z"
+          ],
+          "endpoint_process_start_times_utc": [
+            "2018-08-20T09:49:32.097Z",
+            "2018-08-20T10:37:08.222Z",
+            "2018-08-20T11:31:06.149Z",
+            "2018-08-20T13:37:26.594Z",
+            "2018-08-20T14:58:13.500Z"
+          ],
+          "a3_a4_correlation": {
+            "hash_match": true,
+            "matching_sha256": [
+              "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+            ],
+            "closest_time_delta_seconds": 6.406,
+            "temporal_proximity_confirmed": true,
+            "correlated": true,
+            "matched_pair": {
+              "network_row_index": 4,
+              "endpoint_row_index": 3,
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+              "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+              "delta_seconds": 6.406
+            }
+          }
+        }
+      }
+    ]
+  },
+  "scoring_summary": {
+    "cumulative_action_reward": 4.9,
+    "action_reward_breakdown": [
+      {
+        "action_id": "A3",
+        "reward": 1.7
+      },
+      {
+        "action_id": "A4",
+        "reward": 1.9
+      },
+      {
+        "action_id": "A1",
+        "reward": 1.3
+      }
+    ],
+    "ppo_normalized_evidence_index": 0.8,
+    "ppo_evidence_breakdown": [
+      {
+        "source": "DNS",
+        "state_key": "dns_positive",
+        "active": true,
+        "contribution": 0.2
+      },
+      {
+        "source": "HTTP direct",
+        "state_key": "http_positive",
+        "active": false,
+        "contribution": 0.0
+      },
+      {
+        "source": "Cisco NVM",
+        "state_key": "network_flow_positive",
+        "active": true,
+        "contribution": 0.25
+      },
+      {
+        "source": "Sysmon",
+        "state_key": "sysmon_positive",
+        "active": true,
+        "contribution": 0.15
+      },
+      {
+        "source": "Corrélation A3-A4",
+        "state_key": "a3_a4_correlation",
+        "active": true,
+        "contribution": 0.2
+      },
+      {
+        "source": "Windows direct",
+        "state_key": "windows_direct_found",
+        "active": false,
+        "contribution": 0.0
+      },
+      {
+        "source": "HTTP contexte",
+        "state_key": "http_context_found",
+        "active": false,
+        "contribution": 0.0
+      },
+      {
+        "source": "Windows contexte",
+        "state_key": "windows_context_found",
+        "active": false,
+        "contribution": 0.0
+      },
+      {
+        "source": "Symantec",
+        "state_key": "edr_indirect",
+        "active": false,
+        "contribution": 0.0
+      }
+    ],
+    "supporting_source_count": 3,
+    "supporting_sources": [
+      "A1 DNS",
+      "A3 Cisco NVM",
+      "A4 Sysmon"
+    ],
+    "context_source_count": 0,
+    "context_sources": []
+  },
+  "human_validation": {
+    "status": "en_attente",
+    "decision": null,
+    "comment": "Le verdict automatique doit être confirmé par un analyste humain."
+  },
+  "execution_error": null,
+  "run_trace": [
+    {
+      "step": 1,
+      "ppo_decision": "PPO a choisi A3",
+      "action_id": "A3",
+      "action_label": "Cisco NVM Flow",
+      "decision_source": "ppo",
+      "output_file": "outputs\\dynamic_A3_cisco_nvm_flow_lookup_20260829_161250.json",
+      "analysis": {
+        "action_id": "A3",
+        "result_count": 6,
+        "result_unit": "ligne(s) de flux réseau Cisco NVM",
+        "result_metrics": {
+          "splunk_row_count": 6,
+          "result_unit": "ligne(s) de flux réseau Cisco NVM",
+          "query_limit": 200,
+          "query_limit_reached": false,
+          "coinhive_indicator_count": 12,
+          "coinhive_domains_found": [
+            "coinhive.com",
+            "ws001.coinhive.com",
+            "ws005.coinhive.com",
+            "ws011.coinhive.com",
+            "ws014.coinhive.com",
+            "ws019.coinhive.com"
+          ],
+          "coinhive_ips_found": [
+            "104.20.208.59",
+            "217.182.164.14",
+            "37.187.165.41",
+            "37.187.166.108",
+            "37.187.167.21",
+            "37.187.167.47"
+          ],
+          "target_host_found": false,
+          "target_ip_found": true,
+          "target_user_found": false,
+          "target_process_found": true,
+          "blocked_event_count": 0,
+          "coinhive_event_count": 6,
+          "coinhive_blocked_event_count": 0,
+          "target_identity_event_count": 6,
+          "h1_correlated_event_count": 0
+        },
+        "evidence_level": "forte",
+        "finding_status": "preuve_directe_ou_principale_trouvee",
+        "evidence_category": "preuve principale réseau forte",
+        "reward": 1.7,
+        "state_update": {
+          "network_flow_positive": true,
+          "coinhive_indicator_found": true,
+          "process_chrome_found": true,
+          "target_ip_found": true,
+          "user_budstoll_found": false,
+          "network_flow_evidence": [
+            {
+              "row_index": 0,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.21",
+              "destination_domain": "ws014.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:34.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 1,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "217.182.164.14",
+              "destination_domain": "ws001.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:49.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 2,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.166.108",
+              "destination_domain": "ws011.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:03.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 3,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.165.41",
+              "destination_domain": "ws005.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:06.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 4,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "104.20.208.59",
+              "destination_domain": "coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:33.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 5,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.47",
+              "destination_domain": "ws019.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:37.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            }
+          ],
+          "endpoint_process_evidence": [],
+          "network_process_hashes": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "endpoint_process_hashes": [],
+          "network_flow_start_times_utc": [
+            "2018-08-20T13:37:33.000Z",
+            "2018-08-20T13:37:34.000Z",
+            "2018-08-20T13:37:49.000Z",
+            "2018-08-20T13:38:03.000Z",
+            "2018-08-20T13:38:06.000Z",
+            "2018-08-20T13:38:37.000Z"
+          ],
+          "endpoint_process_start_times_utc": [],
+          "a3_a4_correlation": {
+            "hash_match": false,
+            "matching_sha256": [],
+            "closest_time_delta_seconds": null,
+            "temporal_proximity_confirmed": false,
+            "correlated": false,
+            "matched_pair": null
+          }
+        },
+        "evidence_details": {
+          "network_flow_evidence": [
+            {
+              "row_index": 0,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.21",
+              "destination_domain": "ws014.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:34.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 1,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "217.182.164.14",
+              "destination_domain": "ws001.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:49.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 2,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.166.108",
+              "destination_domain": "ws011.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:03.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 3,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.165.41",
+              "destination_domain": "ws005.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:06.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 4,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "104.20.208.59",
+              "destination_domain": "coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:33.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 5,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.47",
+              "destination_domain": "ws019.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:37.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            }
+          ],
+          "endpoint_process_evidence": [],
+          "network_process_hashes": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "endpoint_process_hashes": [],
+          "network_flow_start_times_utc": [
+            "2018-08-20T13:37:33.000Z",
+            "2018-08-20T13:37:34.000Z",
+            "2018-08-20T13:37:49.000Z",
+            "2018-08-20T13:38:03.000Z",
+            "2018-08-20T13:38:06.000Z",
+            "2018-08-20T13:38:37.000Z"
+          ],
+          "endpoint_process_start_times_utc": [],
+          "a3_a4_correlation": {
+            "hash_match": false,
+            "matching_sha256": [],
+            "closest_time_delta_seconds": null,
+            "temporal_proximity_confirmed": false,
+            "correlated": false,
+            "matched_pair": null
+          }
+        },
+        "comment": "6 flux Cisco NVM relient exactement la source 192.168.247.131, une destination Coinhive et le champ pn=chrome.exe.",
+        "cumulative_reward_after_action": 1.7
+      },
+      "state_after_action": {
+        "dns_positive": false,
+        "http_positive": false,
+        "http_context_found": false,
+        "network_flow_positive": true,
+        "sysmon_positive": false,
+        "endpoint_positive": false,
+        "windows_direct_found": false,
+        "windows_context_found": false,
+        "edr_indirect": false,
+        "coinhive_indicator_found": true,
+        "process_chrome_found": true,
+        "user_budstoll_found": false,
+        "host_bstoll_found": false,
+        "target_ip_found": true,
+        "network_flow_evidence": [
+          {
+            "row_index": 0,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.167.21",
+            "destination_domain": "ws014.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:34.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 1,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "217.182.164.14",
+            "destination_domain": "ws001.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:49.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 2,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.166.108",
+            "destination_domain": "ws011.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:38:03.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 3,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.165.41",
+            "destination_domain": "ws005.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:38:06.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 4,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "104.20.208.59",
+            "destination_domain": "coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:33.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 5,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.167.47",
+            "destination_domain": "ws019.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:38:37.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          }
+        ],
+        "endpoint_process_evidence": [],
+        "network_process_hashes": [
+          "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+        ],
+        "endpoint_process_hashes": [],
+        "network_flow_start_times_utc": [
+          "2018-08-20T13:37:33.000Z",
+          "2018-08-20T13:37:34.000Z",
+          "2018-08-20T13:37:49.000Z",
+          "2018-08-20T13:38:03.000Z",
+          "2018-08-20T13:38:06.000Z",
+          "2018-08-20T13:38:37.000Z"
+        ],
+        "endpoint_process_start_times_utc": [],
+        "a3_a4_correlation": {
+          "hash_match": false,
+          "matching_sha256": [],
+          "closest_time_delta_seconds": null,
+          "temporal_proximity_confirmed": false,
+          "correlated": false,
+          "matched_pair": null
+        },
+        "evidence_score": 1.7,
+        "multi_source_count": 1,
+        "context_source_count": 0,
+        "stop_decision": null,
+        "executed_actions": [
+          "A3"
+        ],
+        "timeline": [
+          {
+            "action_id": "A3",
+            "result_count": 6,
+            "result_unit": "ligne(s) de flux réseau Cisco NVM",
+            "result_metrics": {
+              "splunk_row_count": 6,
+              "result_unit": "ligne(s) de flux réseau Cisco NVM",
+              "query_limit": 200,
+              "query_limit_reached": false,
+              "coinhive_indicator_count": 12,
+              "coinhive_domains_found": [
+                "coinhive.com",
+                "ws001.coinhive.com",
+                "ws005.coinhive.com",
+                "ws011.coinhive.com",
+                "ws014.coinhive.com",
+                "ws019.coinhive.com"
+              ],
+              "coinhive_ips_found": [
+                "104.20.208.59",
+                "217.182.164.14",
+                "37.187.165.41",
+                "37.187.166.108",
+                "37.187.167.21",
+                "37.187.167.47"
+              ],
+              "target_host_found": false,
+              "target_ip_found": true,
+              "target_user_found": false,
+              "target_process_found": true,
+              "blocked_event_count": 0,
+              "coinhive_event_count": 6,
+              "coinhive_blocked_event_count": 0,
+              "target_identity_event_count": 6,
+              "h1_correlated_event_count": 0
+            },
+            "evidence_level": "forte",
+            "finding_status": "preuve_directe_ou_principale_trouvee",
+            "evidence_category": "preuve principale réseau forte",
+            "reward": 1.7,
+            "cumulative_reward_after_action": 1.7,
+            "comment": "6 flux Cisco NVM relient exactement la source 192.168.247.131, une destination Coinhive et le champ pn=chrome.exe.",
+            "evidence_details": {
+              "network_flow_evidence": [
+                {
+                  "row_index": 0,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.21",
+                  "destination_domain": "ws014.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:34.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "217.182.164.14",
+                  "destination_domain": "ws001.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:49.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.166.108",
+                  "destination_domain": "ws011.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:03.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.165.41",
+                  "destination_domain": "ws005.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:06.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "104.20.208.59",
+                  "destination_domain": "coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 5,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.47",
+                  "destination_domain": "ws019.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:37.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "endpoint_process_evidence": [],
+              "network_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "endpoint_process_hashes": [],
+              "network_flow_start_times_utc": [
+                "2018-08-20T13:37:33.000Z",
+                "2018-08-20T13:37:34.000Z",
+                "2018-08-20T13:37:49.000Z",
+                "2018-08-20T13:38:03.000Z",
+                "2018-08-20T13:38:06.000Z",
+                "2018-08-20T13:38:37.000Z"
+              ],
+              "endpoint_process_start_times_utc": [],
+              "a3_a4_correlation": {
+                "hash_match": false,
+                "matching_sha256": [],
+                "closest_time_delta_seconds": null,
+                "temporal_proximity_confirmed": false,
+                "correlated": false,
+                "matched_pair": null
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "ppo_decision": "PPO a choisi A4",
+      "action_id": "A4",
+      "action_label": "Sysmon",
+      "decision_source": "ppo",
+      "output_file": "outputs\\dynamic_A4_sysmon_process_lookup_20260829_161255.json",
+      "analysis": {
+        "action_id": "A4",
+        "result_count": 5,
+        "result_unit": "événement(s) Sysmon de création de processus",
+        "result_metrics": {
+          "splunk_row_count": 5,
+          "result_unit": "événement(s) Sysmon de création de processus",
+          "query_limit": 200,
+          "query_limit_reached": false,
+          "coinhive_indicator_count": 0,
+          "coinhive_domains_found": [],
+          "coinhive_ips_found": [],
+          "target_host_found": true,
+          "target_ip_found": false,
+          "target_user_found": true,
+          "target_process_found": true,
+          "blocked_event_count": 0,
+          "coinhive_event_count": 0,
+          "coinhive_blocked_event_count": 0,
+          "target_identity_event_count": 5,
+          "h1_correlated_event_count": 0
+        },
+        "evidence_level": "forte",
+        "finding_status": "preuve_endpoint_correlee_forte",
+        "evidence_category": "preuve endpoint corrélée forte avec A3",
+        "reward": 1.9,
+        "state_update": {
+          "sysmon_positive": true,
+          "endpoint_positive": true,
+          "process_chrome_found": true,
+          "host_bstoll_found": true,
+          "user_budstoll_found": true,
+          "network_flow_evidence": [
+            {
+              "row_index": 0,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.21",
+              "destination_domain": "ws014.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:34.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 1,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "217.182.164.14",
+              "destination_domain": "ws001.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:49.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 2,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.166.108",
+              "destination_domain": "ws011.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:03.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 3,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.165.41",
+              "destination_domain": "ws005.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:06.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 4,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "104.20.208.59",
+              "destination_domain": "coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:33.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 5,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.47",
+              "destination_domain": "ws019.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:37.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            }
+          ],
+          "endpoint_process_evidence": [
+            {
+              "row_index": 0,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T09:49:32.097Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 1,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T10:37:08.222Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 2,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T11:31:06.149Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 3,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:26.594Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 4,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T14:58:13.500Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            }
+          ],
+          "network_process_hashes": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "endpoint_process_hashes": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "network_flow_start_times_utc": [
+            "2018-08-20T13:37:33.000Z",
+            "2018-08-20T13:37:34.000Z",
+            "2018-08-20T13:37:49.000Z",
+            "2018-08-20T13:38:03.000Z",
+            "2018-08-20T13:38:06.000Z",
+            "2018-08-20T13:38:37.000Z"
+          ],
+          "endpoint_process_start_times_utc": [
+            "2018-08-20T09:49:32.097Z",
+            "2018-08-20T10:37:08.222Z",
+            "2018-08-20T11:31:06.149Z",
+            "2018-08-20T13:37:26.594Z",
+            "2018-08-20T14:58:13.500Z"
+          ],
+          "a3_a4_correlation": {
+            "hash_match": true,
+            "matching_sha256": [
+              "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+            ],
+            "closest_time_delta_seconds": 6.406,
+            "temporal_proximity_confirmed": true,
+            "correlated": true,
+            "matched_pair": {
+              "network_row_index": 4,
+              "endpoint_row_index": 3,
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+              "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+              "delta_seconds": 6.406
+            }
+          }
+        },
+        "evidence_details": {
+          "network_flow_evidence": [
+            {
+              "row_index": 0,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.21",
+              "destination_domain": "ws014.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:34.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 1,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "217.182.164.14",
+              "destination_domain": "ws001.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:49.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 2,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.166.108",
+              "destination_domain": "ws011.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:03.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 3,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.165.41",
+              "destination_domain": "ws005.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:06.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 4,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "104.20.208.59",
+              "destination_domain": "coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:33.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 5,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.47",
+              "destination_domain": "ws019.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:37.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            }
+          ],
+          "endpoint_process_evidence": [
+            {
+              "row_index": 0,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T09:49:32.097Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 1,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T10:37:08.222Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 2,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T11:31:06.149Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 3,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:26.594Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 4,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T14:58:13.500Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            }
+          ],
+          "network_process_hashes": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "endpoint_process_hashes": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "network_flow_start_times_utc": [
+            "2018-08-20T13:37:33.000Z",
+            "2018-08-20T13:37:34.000Z",
+            "2018-08-20T13:37:49.000Z",
+            "2018-08-20T13:38:03.000Z",
+            "2018-08-20T13:38:06.000Z",
+            "2018-08-20T13:38:37.000Z"
+          ],
+          "endpoint_process_start_times_utc": [
+            "2018-08-20T09:49:32.097Z",
+            "2018-08-20T10:37:08.222Z",
+            "2018-08-20T11:31:06.149Z",
+            "2018-08-20T13:37:26.594Z",
+            "2018-08-20T14:58:13.500Z"
+          ],
+          "a3_a4_correlation": {
+            "hash_match": true,
+            "matching_sha256": [
+              "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+            ],
+            "closest_time_delta_seconds": 6.406,
+            "temporal_proximity_confirmed": true,
+            "correlated": true,
+            "matched_pair": {
+              "network_row_index": 4,
+              "endpoint_row_index": 3,
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+              "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+              "delta_seconds": 6.406
+            }
+          }
+        },
+        "comment": "5 événement(s) Sysmon montrent Image=chrome.exe sur BSTOLL-L. Une même paire A3-A4 partage le SHA-256 268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA et un délai de 6.4 seconde(s).",
+        "cumulative_reward_after_action": 3.6
+      },
+      "state_after_action": {
+        "dns_positive": false,
+        "http_positive": false,
+        "http_context_found": false,
+        "network_flow_positive": true,
+        "sysmon_positive": true,
+        "endpoint_positive": true,
+        "windows_direct_found": false,
+        "windows_context_found": false,
+        "edr_indirect": false,
+        "coinhive_indicator_found": true,
+        "process_chrome_found": true,
+        "user_budstoll_found": true,
+        "host_bstoll_found": true,
+        "target_ip_found": true,
+        "network_flow_evidence": [
+          {
+            "row_index": 0,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.167.21",
+            "destination_domain": "ws014.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:34.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 1,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "217.182.164.14",
+            "destination_domain": "ws001.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:49.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 2,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.166.108",
+            "destination_domain": "ws011.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:38:03.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 3,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.165.41",
+            "destination_domain": "ws005.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:38:06.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 4,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "104.20.208.59",
+            "destination_domain": "coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:33.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 5,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.167.47",
+            "destination_domain": "ws019.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:38:37.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          }
+        ],
+        "endpoint_process_evidence": [
+          {
+            "row_index": 0,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T09:49:32.097Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 1,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T10:37:08.222Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 2,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T11:31:06.149Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 3,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:26.594Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 4,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T14:58:13.500Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          }
+        ],
+        "network_process_hashes": [
+          "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+        ],
+        "endpoint_process_hashes": [
+          "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+        ],
+        "network_flow_start_times_utc": [
+          "2018-08-20T13:37:33.000Z",
+          "2018-08-20T13:37:34.000Z",
+          "2018-08-20T13:37:49.000Z",
+          "2018-08-20T13:38:03.000Z",
+          "2018-08-20T13:38:06.000Z",
+          "2018-08-20T13:38:37.000Z"
+        ],
+        "endpoint_process_start_times_utc": [
+          "2018-08-20T09:49:32.097Z",
+          "2018-08-20T10:37:08.222Z",
+          "2018-08-20T11:31:06.149Z",
+          "2018-08-20T13:37:26.594Z",
+          "2018-08-20T14:58:13.500Z"
+        ],
+        "a3_a4_correlation": {
+          "hash_match": true,
+          "matching_sha256": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "closest_time_delta_seconds": 6.406,
+          "temporal_proximity_confirmed": true,
+          "correlated": true,
+          "matched_pair": {
+            "network_row_index": 4,
+            "endpoint_row_index": 3,
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+            "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+            "delta_seconds": 6.406
+          }
+        },
+        "evidence_score": 3.6,
+        "multi_source_count": 2,
+        "context_source_count": 0,
+        "stop_decision": null,
+        "executed_actions": [
+          "A3",
+          "A4"
+        ],
+        "timeline": [
+          {
+            "action_id": "A3",
+            "result_count": 6,
+            "result_unit": "ligne(s) de flux réseau Cisco NVM",
+            "result_metrics": {
+              "splunk_row_count": 6,
+              "result_unit": "ligne(s) de flux réseau Cisco NVM",
+              "query_limit": 200,
+              "query_limit_reached": false,
+              "coinhive_indicator_count": 12,
+              "coinhive_domains_found": [
+                "coinhive.com",
+                "ws001.coinhive.com",
+                "ws005.coinhive.com",
+                "ws011.coinhive.com",
+                "ws014.coinhive.com",
+                "ws019.coinhive.com"
+              ],
+              "coinhive_ips_found": [
+                "104.20.208.59",
+                "217.182.164.14",
+                "37.187.165.41",
+                "37.187.166.108",
+                "37.187.167.21",
+                "37.187.167.47"
+              ],
+              "target_host_found": false,
+              "target_ip_found": true,
+              "target_user_found": false,
+              "target_process_found": true,
+              "blocked_event_count": 0,
+              "coinhive_event_count": 6,
+              "coinhive_blocked_event_count": 0,
+              "target_identity_event_count": 6,
+              "h1_correlated_event_count": 0
+            },
+            "evidence_level": "forte",
+            "finding_status": "preuve_directe_ou_principale_trouvee",
+            "evidence_category": "preuve principale réseau forte",
+            "reward": 1.7,
+            "cumulative_reward_after_action": 1.7,
+            "comment": "6 flux Cisco NVM relient exactement la source 192.168.247.131, une destination Coinhive et le champ pn=chrome.exe.",
+            "evidence_details": {
+              "network_flow_evidence": [
+                {
+                  "row_index": 0,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.21",
+                  "destination_domain": "ws014.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:34.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "217.182.164.14",
+                  "destination_domain": "ws001.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:49.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.166.108",
+                  "destination_domain": "ws011.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:03.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.165.41",
+                  "destination_domain": "ws005.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:06.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "104.20.208.59",
+                  "destination_domain": "coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 5,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.47",
+                  "destination_domain": "ws019.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:37.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "endpoint_process_evidence": [],
+              "network_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "endpoint_process_hashes": [],
+              "network_flow_start_times_utc": [
+                "2018-08-20T13:37:33.000Z",
+                "2018-08-20T13:37:34.000Z",
+                "2018-08-20T13:37:49.000Z",
+                "2018-08-20T13:38:03.000Z",
+                "2018-08-20T13:38:06.000Z",
+                "2018-08-20T13:38:37.000Z"
+              ],
+              "endpoint_process_start_times_utc": [],
+              "a3_a4_correlation": {
+                "hash_match": false,
+                "matching_sha256": [],
+                "closest_time_delta_seconds": null,
+                "temporal_proximity_confirmed": false,
+                "correlated": false,
+                "matched_pair": null
+              }
+            }
+          },
+          {
+            "action_id": "A4",
+            "result_count": 5,
+            "result_unit": "événement(s) Sysmon de création de processus",
+            "result_metrics": {
+              "splunk_row_count": 5,
+              "result_unit": "événement(s) Sysmon de création de processus",
+              "query_limit": 200,
+              "query_limit_reached": false,
+              "coinhive_indicator_count": 0,
+              "coinhive_domains_found": [],
+              "coinhive_ips_found": [],
+              "target_host_found": true,
+              "target_ip_found": false,
+              "target_user_found": true,
+              "target_process_found": true,
+              "blocked_event_count": 0,
+              "coinhive_event_count": 0,
+              "coinhive_blocked_event_count": 0,
+              "target_identity_event_count": 5,
+              "h1_correlated_event_count": 0
+            },
+            "evidence_level": "forte",
+            "finding_status": "preuve_endpoint_correlee_forte",
+            "evidence_category": "preuve endpoint corrélée forte avec A3",
+            "reward": 1.9,
+            "cumulative_reward_after_action": 3.6,
+            "comment": "5 événement(s) Sysmon montrent Image=chrome.exe sur BSTOLL-L. Une même paire A3-A4 partage le SHA-256 268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA et un délai de 6.4 seconde(s).",
+            "evidence_details": {
+              "network_flow_evidence": [
+                {
+                  "row_index": 0,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.21",
+                  "destination_domain": "ws014.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:34.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "217.182.164.14",
+                  "destination_domain": "ws001.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:49.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.166.108",
+                  "destination_domain": "ws011.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:03.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.165.41",
+                  "destination_domain": "ws005.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:06.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "104.20.208.59",
+                  "destination_domain": "coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 5,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.47",
+                  "destination_domain": "ws019.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:37.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "endpoint_process_evidence": [
+                {
+                  "row_index": 0,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T09:49:32.097Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T10:37:08.222Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T11:31:06.149Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:26.594Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T14:58:13.500Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "network_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "endpoint_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "network_flow_start_times_utc": [
+                "2018-08-20T13:37:33.000Z",
+                "2018-08-20T13:37:34.000Z",
+                "2018-08-20T13:37:49.000Z",
+                "2018-08-20T13:38:03.000Z",
+                "2018-08-20T13:38:06.000Z",
+                "2018-08-20T13:38:37.000Z"
+              ],
+              "endpoint_process_start_times_utc": [
+                "2018-08-20T09:49:32.097Z",
+                "2018-08-20T10:37:08.222Z",
+                "2018-08-20T11:31:06.149Z",
+                "2018-08-20T13:37:26.594Z",
+                "2018-08-20T14:58:13.500Z"
+              ],
+              "a3_a4_correlation": {
+                "hash_match": true,
+                "matching_sha256": [
+                  "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+                ],
+                "closest_time_delta_seconds": 6.406,
+                "temporal_proximity_confirmed": true,
+                "correlated": true,
+                "matched_pair": {
+                  "network_row_index": 4,
+                  "endpoint_row_index": 3,
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+                  "delta_seconds": 6.406
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "step": 3,
+      "ppo_decision": "PPO a choisi A1",
+      "action_id": "A1",
+      "action_label": "DNS",
+      "decision_source": "ppo",
+      "output_file": "outputs\\dynamic_A1_dns_lookup_20260829_161259.json",
+      "analysis": {
+        "action_id": "A1",
+        "result_count": 28,
+        "result_unit": "événement(s) DNS",
+        "result_metrics": {
+          "splunk_row_count": 28,
+          "result_unit": "événement(s) DNS",
+          "query_limit": 200,
+          "query_limit_reached": false,
+          "coinhive_indicator_count": 12,
+          "coinhive_domains_found": [
+            "coinhive.com",
+            "ws001.coinhive.com",
+            "ws005.coinhive.com",
+            "ws011.coinhive.com",
+            "ws014.coinhive.com",
+            "ws019.coinhive.com"
+          ],
+          "coinhive_ips_found": [
+            "104.20.208.59",
+            "217.182.164.14",
+            "37.187.165.41",
+            "37.187.166.108",
+            "37.187.167.21",
+            "37.187.167.47"
+          ],
+          "target_host_found": true,
+          "target_ip_found": true,
+          "target_user_found": false,
+          "target_process_found": false,
+          "blocked_event_count": 0,
+          "coinhive_event_count": 28,
+          "coinhive_blocked_event_count": 0,
+          "target_identity_event_count": 21,
+          "h1_correlated_event_count": 0
+        },
+        "evidence_level": "positive",
+        "finding_status": "preuve_directe_ou_principale_trouvee",
+        "evidence_category": "preuve principale DNS",
+        "reward": 1.3,
+        "state_update": {
+          "dns_positive": true,
+          "coinhive_indicator_found": true,
+          "target_ip_found": true
+        },
+        "evidence_details": {
+          "network_flow_evidence": [
+            {
+              "row_index": 0,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.21",
+              "destination_domain": "ws014.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:34.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 1,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "217.182.164.14",
+              "destination_domain": "ws001.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:49.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 2,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.166.108",
+              "destination_domain": "ws011.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:03.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 3,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.165.41",
+              "destination_domain": "ws005.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:06.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 4,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "104.20.208.59",
+              "destination_domain": "coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:33.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 5,
+              "source_ip": "192.168.247.131",
+              "destination_ip": "37.187.167.47",
+              "destination_domain": "ws019.coinhive.com",
+              "process_name": "chrome.exe",
+              "user": "",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:38:37.000Z",
+              "indicator_found": true,
+              "source_is_target": true,
+              "process_is_target": true
+            }
+          ],
+          "endpoint_process_evidence": [
+            {
+              "row_index": 0,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T09:49:32.097Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 1,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T10:37:08.222Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 2,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T11:31:06.149Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 3,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T13:37:26.594Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            },
+            {
+              "row_index": 4,
+              "host": "BSTOLL-L",
+              "user": "AzureAD\\BudStoll",
+              "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "start_time_utc": "2018-08-20T14:58:13.500Z",
+              "host_is_target": true,
+              "user_is_target": true,
+              "process_is_target": true
+            }
+          ],
+          "network_process_hashes": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "endpoint_process_hashes": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "network_flow_start_times_utc": [
+            "2018-08-20T13:37:33.000Z",
+            "2018-08-20T13:37:34.000Z",
+            "2018-08-20T13:37:49.000Z",
+            "2018-08-20T13:38:03.000Z",
+            "2018-08-20T13:38:06.000Z",
+            "2018-08-20T13:38:37.000Z"
+          ],
+          "endpoint_process_start_times_utc": [
+            "2018-08-20T09:49:32.097Z",
+            "2018-08-20T10:37:08.222Z",
+            "2018-08-20T11:31:06.149Z",
+            "2018-08-20T13:37:26.594Z",
+            "2018-08-20T14:58:13.500Z"
+          ],
+          "a3_a4_correlation": {
+            "hash_match": true,
+            "matching_sha256": [
+              "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+            ],
+            "closest_time_delta_seconds": 6.406,
+            "temporal_proximity_confirmed": true,
+            "correlated": true,
+            "matched_pair": {
+              "network_row_index": 4,
+              "endpoint_row_index": 3,
+              "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+              "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+              "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+              "delta_seconds": 6.406
+            }
+          }
+        },
+        "comment": "28 événement(s) DNS contiennent un indicateur Coinhive exact.",
+        "cumulative_reward_after_action": 4.9
+      },
+      "state_after_action": {
+        "dns_positive": true,
+        "http_positive": false,
+        "http_context_found": false,
+        "network_flow_positive": true,
+        "sysmon_positive": true,
+        "endpoint_positive": true,
+        "windows_direct_found": false,
+        "windows_context_found": false,
+        "edr_indirect": false,
+        "coinhive_indicator_found": true,
+        "process_chrome_found": true,
+        "user_budstoll_found": true,
+        "host_bstoll_found": true,
+        "target_ip_found": true,
+        "network_flow_evidence": [
+          {
+            "row_index": 0,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.167.21",
+            "destination_domain": "ws014.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:34.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 1,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "217.182.164.14",
+            "destination_domain": "ws001.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:49.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 2,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.166.108",
+            "destination_domain": "ws011.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:38:03.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 3,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.165.41",
+            "destination_domain": "ws005.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:38:06.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 4,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "104.20.208.59",
+            "destination_domain": "coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:33.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 5,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.167.47",
+            "destination_domain": "ws019.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:38:37.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          }
+        ],
+        "endpoint_process_evidence": [
+          {
+            "row_index": 0,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T09:49:32.097Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 1,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T10:37:08.222Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 2,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T11:31:06.149Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 3,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:26.594Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 4,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T14:58:13.500Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          }
+        ],
+        "network_process_hashes": [
+          "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+        ],
+        "endpoint_process_hashes": [
+          "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+        ],
+        "network_flow_start_times_utc": [
+          "2018-08-20T13:37:33.000Z",
+          "2018-08-20T13:37:34.000Z",
+          "2018-08-20T13:37:49.000Z",
+          "2018-08-20T13:38:03.000Z",
+          "2018-08-20T13:38:06.000Z",
+          "2018-08-20T13:38:37.000Z"
+        ],
+        "endpoint_process_start_times_utc": [
+          "2018-08-20T09:49:32.097Z",
+          "2018-08-20T10:37:08.222Z",
+          "2018-08-20T11:31:06.149Z",
+          "2018-08-20T13:37:26.594Z",
+          "2018-08-20T14:58:13.500Z"
+        ],
+        "a3_a4_correlation": {
+          "hash_match": true,
+          "matching_sha256": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "closest_time_delta_seconds": 6.406,
+          "temporal_proximity_confirmed": true,
+          "correlated": true,
+          "matched_pair": {
+            "network_row_index": 4,
+            "endpoint_row_index": 3,
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+            "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+            "delta_seconds": 6.406
+          }
+        },
+        "evidence_score": 4.9,
+        "multi_source_count": 3,
+        "context_source_count": 0,
+        "stop_decision": null,
+        "executed_actions": [
+          "A3",
+          "A4",
+          "A1"
+        ],
+        "timeline": [
+          {
+            "action_id": "A3",
+            "result_count": 6,
+            "result_unit": "ligne(s) de flux réseau Cisco NVM",
+            "result_metrics": {
+              "splunk_row_count": 6,
+              "result_unit": "ligne(s) de flux réseau Cisco NVM",
+              "query_limit": 200,
+              "query_limit_reached": false,
+              "coinhive_indicator_count": 12,
+              "coinhive_domains_found": [
+                "coinhive.com",
+                "ws001.coinhive.com",
+                "ws005.coinhive.com",
+                "ws011.coinhive.com",
+                "ws014.coinhive.com",
+                "ws019.coinhive.com"
+              ],
+              "coinhive_ips_found": [
+                "104.20.208.59",
+                "217.182.164.14",
+                "37.187.165.41",
+                "37.187.166.108",
+                "37.187.167.21",
+                "37.187.167.47"
+              ],
+              "target_host_found": false,
+              "target_ip_found": true,
+              "target_user_found": false,
+              "target_process_found": true,
+              "blocked_event_count": 0,
+              "coinhive_event_count": 6,
+              "coinhive_blocked_event_count": 0,
+              "target_identity_event_count": 6,
+              "h1_correlated_event_count": 0
+            },
+            "evidence_level": "forte",
+            "finding_status": "preuve_directe_ou_principale_trouvee",
+            "evidence_category": "preuve principale réseau forte",
+            "reward": 1.7,
+            "cumulative_reward_after_action": 1.7,
+            "comment": "6 flux Cisco NVM relient exactement la source 192.168.247.131, une destination Coinhive et le champ pn=chrome.exe.",
+            "evidence_details": {
+              "network_flow_evidence": [
+                {
+                  "row_index": 0,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.21",
+                  "destination_domain": "ws014.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:34.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "217.182.164.14",
+                  "destination_domain": "ws001.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:49.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.166.108",
+                  "destination_domain": "ws011.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:03.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.165.41",
+                  "destination_domain": "ws005.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:06.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "104.20.208.59",
+                  "destination_domain": "coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 5,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.47",
+                  "destination_domain": "ws019.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:37.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "endpoint_process_evidence": [],
+              "network_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "endpoint_process_hashes": [],
+              "network_flow_start_times_utc": [
+                "2018-08-20T13:37:33.000Z",
+                "2018-08-20T13:37:34.000Z",
+                "2018-08-20T13:37:49.000Z",
+                "2018-08-20T13:38:03.000Z",
+                "2018-08-20T13:38:06.000Z",
+                "2018-08-20T13:38:37.000Z"
+              ],
+              "endpoint_process_start_times_utc": [],
+              "a3_a4_correlation": {
+                "hash_match": false,
+                "matching_sha256": [],
+                "closest_time_delta_seconds": null,
+                "temporal_proximity_confirmed": false,
+                "correlated": false,
+                "matched_pair": null
+              }
+            }
+          },
+          {
+            "action_id": "A4",
+            "result_count": 5,
+            "result_unit": "événement(s) Sysmon de création de processus",
+            "result_metrics": {
+              "splunk_row_count": 5,
+              "result_unit": "événement(s) Sysmon de création de processus",
+              "query_limit": 200,
+              "query_limit_reached": false,
+              "coinhive_indicator_count": 0,
+              "coinhive_domains_found": [],
+              "coinhive_ips_found": [],
+              "target_host_found": true,
+              "target_ip_found": false,
+              "target_user_found": true,
+              "target_process_found": true,
+              "blocked_event_count": 0,
+              "coinhive_event_count": 0,
+              "coinhive_blocked_event_count": 0,
+              "target_identity_event_count": 5,
+              "h1_correlated_event_count": 0
+            },
+            "evidence_level": "forte",
+            "finding_status": "preuve_endpoint_correlee_forte",
+            "evidence_category": "preuve endpoint corrélée forte avec A3",
+            "reward": 1.9,
+            "cumulative_reward_after_action": 3.6,
+            "comment": "5 événement(s) Sysmon montrent Image=chrome.exe sur BSTOLL-L. Une même paire A3-A4 partage le SHA-256 268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA et un délai de 6.4 seconde(s).",
+            "evidence_details": {
+              "network_flow_evidence": [
+                {
+                  "row_index": 0,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.21",
+                  "destination_domain": "ws014.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:34.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "217.182.164.14",
+                  "destination_domain": "ws001.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:49.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.166.108",
+                  "destination_domain": "ws011.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:03.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.165.41",
+                  "destination_domain": "ws005.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:06.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "104.20.208.59",
+                  "destination_domain": "coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 5,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.47",
+                  "destination_domain": "ws019.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:37.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "endpoint_process_evidence": [
+                {
+                  "row_index": 0,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T09:49:32.097Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T10:37:08.222Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T11:31:06.149Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:26.594Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T14:58:13.500Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "network_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "endpoint_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "network_flow_start_times_utc": [
+                "2018-08-20T13:37:33.000Z",
+                "2018-08-20T13:37:34.000Z",
+                "2018-08-20T13:37:49.000Z",
+                "2018-08-20T13:38:03.000Z",
+                "2018-08-20T13:38:06.000Z",
+                "2018-08-20T13:38:37.000Z"
+              ],
+              "endpoint_process_start_times_utc": [
+                "2018-08-20T09:49:32.097Z",
+                "2018-08-20T10:37:08.222Z",
+                "2018-08-20T11:31:06.149Z",
+                "2018-08-20T13:37:26.594Z",
+                "2018-08-20T14:58:13.500Z"
+              ],
+              "a3_a4_correlation": {
+                "hash_match": true,
+                "matching_sha256": [
+                  "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+                ],
+                "closest_time_delta_seconds": 6.406,
+                "temporal_proximity_confirmed": true,
+                "correlated": true,
+                "matched_pair": {
+                  "network_row_index": 4,
+                  "endpoint_row_index": 3,
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+                  "delta_seconds": 6.406
+                }
+              }
+            }
+          },
+          {
+            "action_id": "A1",
+            "result_count": 28,
+            "result_unit": "événement(s) DNS",
+            "result_metrics": {
+              "splunk_row_count": 28,
+              "result_unit": "événement(s) DNS",
+              "query_limit": 200,
+              "query_limit_reached": false,
+              "coinhive_indicator_count": 12,
+              "coinhive_domains_found": [
+                "coinhive.com",
+                "ws001.coinhive.com",
+                "ws005.coinhive.com",
+                "ws011.coinhive.com",
+                "ws014.coinhive.com",
+                "ws019.coinhive.com"
+              ],
+              "coinhive_ips_found": [
+                "104.20.208.59",
+                "217.182.164.14",
+                "37.187.165.41",
+                "37.187.166.108",
+                "37.187.167.21",
+                "37.187.167.47"
+              ],
+              "target_host_found": true,
+              "target_ip_found": true,
+              "target_user_found": false,
+              "target_process_found": false,
+              "blocked_event_count": 0,
+              "coinhive_event_count": 28,
+              "coinhive_blocked_event_count": 0,
+              "target_identity_event_count": 21,
+              "h1_correlated_event_count": 0
+            },
+            "evidence_level": "positive",
+            "finding_status": "preuve_directe_ou_principale_trouvee",
+            "evidence_category": "preuve principale DNS",
+            "reward": 1.3,
+            "cumulative_reward_after_action": 4.9,
+            "comment": "28 événement(s) DNS contiennent un indicateur Coinhive exact.",
+            "evidence_details": {
+              "network_flow_evidence": [
+                {
+                  "row_index": 0,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.21",
+                  "destination_domain": "ws014.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:34.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "217.182.164.14",
+                  "destination_domain": "ws001.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:49.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.166.108",
+                  "destination_domain": "ws011.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:03.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.165.41",
+                  "destination_domain": "ws005.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:06.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "104.20.208.59",
+                  "destination_domain": "coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 5,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.47",
+                  "destination_domain": "ws019.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:37.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "endpoint_process_evidence": [
+                {
+                  "row_index": 0,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T09:49:32.097Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T10:37:08.222Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T11:31:06.149Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:26.594Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T14:58:13.500Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "network_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "endpoint_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "network_flow_start_times_utc": [
+                "2018-08-20T13:37:33.000Z",
+                "2018-08-20T13:37:34.000Z",
+                "2018-08-20T13:37:49.000Z",
+                "2018-08-20T13:38:03.000Z",
+                "2018-08-20T13:38:06.000Z",
+                "2018-08-20T13:38:37.000Z"
+              ],
+              "endpoint_process_start_times_utc": [
+                "2018-08-20T09:49:32.097Z",
+                "2018-08-20T10:37:08.222Z",
+                "2018-08-20T11:31:06.149Z",
+                "2018-08-20T13:37:26.594Z",
+                "2018-08-20T14:58:13.500Z"
+              ],
+              "a3_a4_correlation": {
+                "hash_match": true,
+                "matching_sha256": [
+                  "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+                ],
+                "closest_time_delta_seconds": 6.406,
+                "temporal_proximity_confirmed": true,
+                "correlated": true,
+                "matched_pair": {
+                  "network_row_index": 4,
+                  "endpoint_row_index": 3,
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+                  "delta_seconds": 6.406
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "step": 4,
+      "ppo_decision": "PPO a choisi A7",
+      "action_id": "A7",
+      "action_label": "Stop / Verdict",
+      "stop_mode": "choisi_par_ppo",
+      "chosen_by_ppo": true,
+      "decision_source": "ppo",
+      "reason": "PPO a choisi A7",
+      "verdict": {
+        "verdict": "hypothese_soutenue",
+        "confidence": "forte",
+        "reason": "H1 est soutenue par DNS, flux Cisco NVM et processus Sysmon corrélé à A3 par le même SHA-256 et une proximité temporelle."
+      },
+      "state_after_action": {
+        "dns_positive": true,
+        "http_positive": false,
+        "http_context_found": false,
+        "network_flow_positive": true,
+        "sysmon_positive": true,
+        "endpoint_positive": true,
+        "windows_direct_found": false,
+        "windows_context_found": false,
+        "edr_indirect": false,
+        "coinhive_indicator_found": true,
+        "process_chrome_found": true,
+        "user_budstoll_found": true,
+        "host_bstoll_found": true,
+        "target_ip_found": true,
+        "network_flow_evidence": [
+          {
+            "row_index": 0,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.167.21",
+            "destination_domain": "ws014.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:34.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 1,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "217.182.164.14",
+            "destination_domain": "ws001.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:49.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 2,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.166.108",
+            "destination_domain": "ws011.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:38:03.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 3,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.165.41",
+            "destination_domain": "ws005.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:38:06.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 4,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "104.20.208.59",
+            "destination_domain": "coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:33.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 5,
+            "source_ip": "192.168.247.131",
+            "destination_ip": "37.187.167.47",
+            "destination_domain": "ws019.coinhive.com",
+            "process_name": "chrome.exe",
+            "user": "",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:38:37.000Z",
+            "indicator_found": true,
+            "source_is_target": true,
+            "process_is_target": true
+          }
+        ],
+        "endpoint_process_evidence": [
+          {
+            "row_index": 0,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T09:49:32.097Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 1,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T10:37:08.222Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 2,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T11:31:06.149Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 3,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T13:37:26.594Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          },
+          {
+            "row_index": 4,
+            "host": "BSTOLL-L",
+            "user": "AzureAD\\BudStoll",
+            "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "start_time_utc": "2018-08-20T14:58:13.500Z",
+            "host_is_target": true,
+            "user_is_target": true,
+            "process_is_target": true
+          }
+        ],
+        "network_process_hashes": [
+          "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+        ],
+        "endpoint_process_hashes": [
+          "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+        ],
+        "network_flow_start_times_utc": [
+          "2018-08-20T13:37:33.000Z",
+          "2018-08-20T13:37:34.000Z",
+          "2018-08-20T13:37:49.000Z",
+          "2018-08-20T13:38:03.000Z",
+          "2018-08-20T13:38:06.000Z",
+          "2018-08-20T13:38:37.000Z"
+        ],
+        "endpoint_process_start_times_utc": [
+          "2018-08-20T09:49:32.097Z",
+          "2018-08-20T10:37:08.222Z",
+          "2018-08-20T11:31:06.149Z",
+          "2018-08-20T13:37:26.594Z",
+          "2018-08-20T14:58:13.500Z"
+        ],
+        "a3_a4_correlation": {
+          "hash_match": true,
+          "matching_sha256": [
+            "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+          ],
+          "closest_time_delta_seconds": 6.406,
+          "temporal_proximity_confirmed": true,
+          "correlated": true,
+          "matched_pair": {
+            "network_row_index": 4,
+            "endpoint_row_index": 3,
+            "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+            "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+            "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+            "delta_seconds": 6.406
+          }
+        },
+        "evidence_score": 4.9,
+        "multi_source_count": 3,
+        "context_source_count": 0,
+        "stop_decision": {
+          "mode": "choisi_par_ppo",
+          "chosen_by_ppo": true,
+          "decision_source": "ppo",
+          "step": 4,
+          "reason": "PPO a choisi A7",
+          "verdict": {
+            "verdict": "hypothese_soutenue",
+            "confidence": "forte",
+            "reason": "H1 est soutenue par DNS, flux Cisco NVM et processus Sysmon corrélé à A3 par le même SHA-256 et une proximité temporelle."
+          }
+        },
+        "executed_actions": [
+          "A3",
+          "A4",
+          "A1",
+          "A7"
+        ],
+        "timeline": [
+          {
+            "action_id": "A3",
+            "result_count": 6,
+            "result_unit": "ligne(s) de flux réseau Cisco NVM",
+            "result_metrics": {
+              "splunk_row_count": 6,
+              "result_unit": "ligne(s) de flux réseau Cisco NVM",
+              "query_limit": 200,
+              "query_limit_reached": false,
+              "coinhive_indicator_count": 12,
+              "coinhive_domains_found": [
+                "coinhive.com",
+                "ws001.coinhive.com",
+                "ws005.coinhive.com",
+                "ws011.coinhive.com",
+                "ws014.coinhive.com",
+                "ws019.coinhive.com"
+              ],
+              "coinhive_ips_found": [
+                "104.20.208.59",
+                "217.182.164.14",
+                "37.187.165.41",
+                "37.187.166.108",
+                "37.187.167.21",
+                "37.187.167.47"
+              ],
+              "target_host_found": false,
+              "target_ip_found": true,
+              "target_user_found": false,
+              "target_process_found": true,
+              "blocked_event_count": 0,
+              "coinhive_event_count": 6,
+              "coinhive_blocked_event_count": 0,
+              "target_identity_event_count": 6,
+              "h1_correlated_event_count": 0
+            },
+            "evidence_level": "forte",
+            "finding_status": "preuve_directe_ou_principale_trouvee",
+            "evidence_category": "preuve principale réseau forte",
+            "reward": 1.7,
+            "cumulative_reward_after_action": 1.7,
+            "comment": "6 flux Cisco NVM relient exactement la source 192.168.247.131, une destination Coinhive et le champ pn=chrome.exe.",
+            "evidence_details": {
+              "network_flow_evidence": [
+                {
+                  "row_index": 0,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.21",
+                  "destination_domain": "ws014.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:34.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "217.182.164.14",
+                  "destination_domain": "ws001.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:49.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.166.108",
+                  "destination_domain": "ws011.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:03.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.165.41",
+                  "destination_domain": "ws005.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:06.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "104.20.208.59",
+                  "destination_domain": "coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 5,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.47",
+                  "destination_domain": "ws019.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:37.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "endpoint_process_evidence": [],
+              "network_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "endpoint_process_hashes": [],
+              "network_flow_start_times_utc": [
+                "2018-08-20T13:37:33.000Z",
+                "2018-08-20T13:37:34.000Z",
+                "2018-08-20T13:37:49.000Z",
+                "2018-08-20T13:38:03.000Z",
+                "2018-08-20T13:38:06.000Z",
+                "2018-08-20T13:38:37.000Z"
+              ],
+              "endpoint_process_start_times_utc": [],
+              "a3_a4_correlation": {
+                "hash_match": false,
+                "matching_sha256": [],
+                "closest_time_delta_seconds": null,
+                "temporal_proximity_confirmed": false,
+                "correlated": false,
+                "matched_pair": null
+              }
+            }
+          },
+          {
+            "action_id": "A4",
+            "result_count": 5,
+            "result_unit": "événement(s) Sysmon de création de processus",
+            "result_metrics": {
+              "splunk_row_count": 5,
+              "result_unit": "événement(s) Sysmon de création de processus",
+              "query_limit": 200,
+              "query_limit_reached": false,
+              "coinhive_indicator_count": 0,
+              "coinhive_domains_found": [],
+              "coinhive_ips_found": [],
+              "target_host_found": true,
+              "target_ip_found": false,
+              "target_user_found": true,
+              "target_process_found": true,
+              "blocked_event_count": 0,
+              "coinhive_event_count": 0,
+              "coinhive_blocked_event_count": 0,
+              "target_identity_event_count": 5,
+              "h1_correlated_event_count": 0
+            },
+            "evidence_level": "forte",
+            "finding_status": "preuve_endpoint_correlee_forte",
+            "evidence_category": "preuve endpoint corrélée forte avec A3",
+            "reward": 1.9,
+            "cumulative_reward_after_action": 3.6,
+            "comment": "5 événement(s) Sysmon montrent Image=chrome.exe sur BSTOLL-L. Une même paire A3-A4 partage le SHA-256 268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA et un délai de 6.4 seconde(s).",
+            "evidence_details": {
+              "network_flow_evidence": [
+                {
+                  "row_index": 0,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.21",
+                  "destination_domain": "ws014.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:34.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "217.182.164.14",
+                  "destination_domain": "ws001.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:49.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.166.108",
+                  "destination_domain": "ws011.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:03.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.165.41",
+                  "destination_domain": "ws005.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:06.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "104.20.208.59",
+                  "destination_domain": "coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 5,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.47",
+                  "destination_domain": "ws019.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:37.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "endpoint_process_evidence": [
+                {
+                  "row_index": 0,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T09:49:32.097Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T10:37:08.222Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T11:31:06.149Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:26.594Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T14:58:13.500Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "network_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "endpoint_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "network_flow_start_times_utc": [
+                "2018-08-20T13:37:33.000Z",
+                "2018-08-20T13:37:34.000Z",
+                "2018-08-20T13:37:49.000Z",
+                "2018-08-20T13:38:03.000Z",
+                "2018-08-20T13:38:06.000Z",
+                "2018-08-20T13:38:37.000Z"
+              ],
+              "endpoint_process_start_times_utc": [
+                "2018-08-20T09:49:32.097Z",
+                "2018-08-20T10:37:08.222Z",
+                "2018-08-20T11:31:06.149Z",
+                "2018-08-20T13:37:26.594Z",
+                "2018-08-20T14:58:13.500Z"
+              ],
+              "a3_a4_correlation": {
+                "hash_match": true,
+                "matching_sha256": [
+                  "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+                ],
+                "closest_time_delta_seconds": 6.406,
+                "temporal_proximity_confirmed": true,
+                "correlated": true,
+                "matched_pair": {
+                  "network_row_index": 4,
+                  "endpoint_row_index": 3,
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+                  "delta_seconds": 6.406
+                }
+              }
+            }
+          },
+          {
+            "action_id": "A1",
+            "result_count": 28,
+            "result_unit": "événement(s) DNS",
+            "result_metrics": {
+              "splunk_row_count": 28,
+              "result_unit": "événement(s) DNS",
+              "query_limit": 200,
+              "query_limit_reached": false,
+              "coinhive_indicator_count": 12,
+              "coinhive_domains_found": [
+                "coinhive.com",
+                "ws001.coinhive.com",
+                "ws005.coinhive.com",
+                "ws011.coinhive.com",
+                "ws014.coinhive.com",
+                "ws019.coinhive.com"
+              ],
+              "coinhive_ips_found": [
+                "104.20.208.59",
+                "217.182.164.14",
+                "37.187.165.41",
+                "37.187.166.108",
+                "37.187.167.21",
+                "37.187.167.47"
+              ],
+              "target_host_found": true,
+              "target_ip_found": true,
+              "target_user_found": false,
+              "target_process_found": false,
+              "blocked_event_count": 0,
+              "coinhive_event_count": 28,
+              "coinhive_blocked_event_count": 0,
+              "target_identity_event_count": 21,
+              "h1_correlated_event_count": 0
+            },
+            "evidence_level": "positive",
+            "finding_status": "preuve_directe_ou_principale_trouvee",
+            "evidence_category": "preuve principale DNS",
+            "reward": 1.3,
+            "cumulative_reward_after_action": 4.9,
+            "comment": "28 événement(s) DNS contiennent un indicateur Coinhive exact.",
+            "evidence_details": {
+              "network_flow_evidence": [
+                {
+                  "row_index": 0,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.21",
+                  "destination_domain": "ws014.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:34.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "217.182.164.14",
+                  "destination_domain": "ws001.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:49.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.166.108",
+                  "destination_domain": "ws011.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:03.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.165.41",
+                  "destination_domain": "ws005.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:06.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "104.20.208.59",
+                  "destination_domain": "coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 5,
+                  "source_ip": "192.168.247.131",
+                  "destination_ip": "37.187.167.47",
+                  "destination_domain": "ws019.coinhive.com",
+                  "process_name": "chrome.exe",
+                  "user": "",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:38:37.000Z",
+                  "indicator_found": true,
+                  "source_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "endpoint_process_evidence": [
+                {
+                  "row_index": 0,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T09:49:32.097Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 1,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T10:37:08.222Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 2,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T11:31:06.149Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 3,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T13:37:26.594Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                },
+                {
+                  "row_index": 4,
+                  "host": "BSTOLL-L",
+                  "user": "AzureAD\\BudStoll",
+                  "image": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "start_time_utc": "2018-08-20T14:58:13.500Z",
+                  "host_is_target": true,
+                  "user_is_target": true,
+                  "process_is_target": true
+                }
+              ],
+              "network_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "endpoint_process_hashes": [
+                "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+              ],
+              "network_flow_start_times_utc": [
+                "2018-08-20T13:37:33.000Z",
+                "2018-08-20T13:37:34.000Z",
+                "2018-08-20T13:37:49.000Z",
+                "2018-08-20T13:38:03.000Z",
+                "2018-08-20T13:38:06.000Z",
+                "2018-08-20T13:38:37.000Z"
+              ],
+              "endpoint_process_start_times_utc": [
+                "2018-08-20T09:49:32.097Z",
+                "2018-08-20T10:37:08.222Z",
+                "2018-08-20T11:31:06.149Z",
+                "2018-08-20T13:37:26.594Z",
+                "2018-08-20T14:58:13.500Z"
+              ],
+              "a3_a4_correlation": {
+                "hash_match": true,
+                "matching_sha256": [
+                  "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA"
+                ],
+                "closest_time_delta_seconds": 6.406,
+                "temporal_proximity_confirmed": true,
+                "correlated": true,
+                "matched_pair": {
+                  "network_row_index": 4,
+                  "endpoint_row_index": 3,
+                  "sha256": "268A0463D7CB907D45E1C2AB91703E71734116F08B2C090E34C2D506183F9BCA",
+                  "network_start_time_utc": "2018-08-20T13:37:33.000Z",
+                  "endpoint_start_time_utc": "2018-08-20T13:37:26.594Z",
+                  "delta_seconds": 6.406
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
