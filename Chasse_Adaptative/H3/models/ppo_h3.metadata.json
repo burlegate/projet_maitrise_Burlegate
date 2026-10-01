@@ -1,0 +1,99 @@
+{
+  "contract_version": "H3-contract-1.0",
+  "action_ids": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7"
+  ],
+  "features": [
+    "R1_attempted",
+    "R1_usable",
+    "R1_empty",
+    "R1_rows_log",
+    "R2_attempted",
+    "R2_usable",
+    "R2_empty",
+    "R2_rows_log",
+    "R3_attempted",
+    "R3_usable",
+    "R3_empty",
+    "R3_rows_log",
+    "R4_attempted",
+    "R4_usable",
+    "R4_empty",
+    "R4_rows_log",
+    "R5_attempted",
+    "R5_usable",
+    "R5_empty",
+    "R5_rows_log",
+    "netbios_compatible",
+    "r2_process_context",
+    "r3_process_context",
+    "r4_tuple_match",
+    "r5_context_alert",
+    "budget_fraction"
+  ],
+  "reward_version": "H3-integration-cost-v1",
+  "packages": {
+    "numpy": "2.5.3",
+    "torch": "2.14.0",
+    "gymnasium": "1.2.3",
+    "stable-baselines3": "2.7.1",
+    "sb3-contrib": "2.7.1"
+  },
+  "code_sha256": {
+    "evidence_interpreter_h3.py": "ac88f4f8548e3a6ae690773ec179608f268834ef97b959fe3d664659335d35a3",
+    "hunting_policy_contract_h3.py": "4b5d24f3455536bff98abe606a2c6b59811ea73a3b8f0e483890aa4675044f0d",
+    "gym_hunting_env_h3.py": "024b61c4a2e5419035865ac8688fb680cb133d9fc671c52edb3df976c179f5cd"
+  },
+  "created_at_utc": "2026-09-28T03:45:51.440834+00:00",
+  "seed": 42,
+  "requested_timesteps": 4096,
+  "actual_timesteps": 4096,
+  "training_mode": "single_case_replay_integration",
+  "training_exports": {
+    "R1": {
+      "path": "C:\\Users\\burle\\Downloads\\agent_chasseH3\\outputs\\H3_R1_dns_lookup_20260928T005046_871729Z.json",
+      "sha256": "5bb4322d661b440a047f03e6d723c4c48d5a41316dd3e6050352a6672c8ac20b"
+    },
+    "R2": {
+      "path": "C:\\Users\\burle\\Downloads\\agent_chasseH3\\outputs\\H3_R2_cisco_nvm_flow_lookup_20260928T013533_042688Z.json",
+      "sha256": "4be2e0bfa420ba2c587721199b6f0cdfa90cca492ae02a954c337bee13fa6da7"
+    },
+    "R3": {
+      "path": "C:\\Users\\burle\\Downloads\\agent_chasseH3\\outputs\\H3_R3_sysmon_process_lookup_20260928T014917_979513Z.json",
+      "sha256": "c16b0567ba2a1ae317543e3d79d5ecaab057f99edb7e8a624a5fa85557c12136"
+    },
+    "R4": {
+      "path": "C:\\Users\\burle\\Downloads\\agent_chasseH3\\outputs\\H3_R4_windows_security_lookup_20260928T022631_568116Z.json",
+      "sha256": "c9f089890260fd3be57964b5573daa1c0959f64c8a673fd488cde282c0d59811"
+    },
+    "R5": {
+      "path": "C:\\Users\\burle\\Downloads\\agent_chasseH3\\outputs\\H3_R5_symantec_alert_lookup_20260928T023006_431203Z.json",
+      "sha256": "be26a66578b8bf6da0e1b4fd5ee192eb0021e04022e109a997326e6710bb5f9e"
+    }
+  },
+  "hyperparameters": {
+    "n_steps": 128,
+    "batch_size": 64,
+    "n_epochs": 5,
+    "gamma": 1.0,
+    "learning_rate": 0.0003,
+    "ent_coef": 0.01,
+    "net_arch": [
+      32,
+      32
+    ]
+  },
+  "reward": "-1 par recherche, 0 pour R7 ; retour total -5 pour tout parcours complet valide.",
+  "model_sha256": "3303599784f4d6557b234b4f163deff24f4ec8210396057140bef8afbccd4b96",
+  "limitations": [
+    "Aucune evaluation independante.",
+    "Aucune generalisation demontree.",
+    "Tous les ordres complets ont le meme retour ; cet apprentissage ne demontre pas un ordre optimal."
+  ]
+}
